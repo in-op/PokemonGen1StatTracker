@@ -38,7 +38,7 @@ namespace PokemonGen1StatTracker
 
         private void savePokemonButton_Click(object sender, EventArgs e)
         {
-            AddPokemonToList();
+            AddOrUpdatePokemonToList();
             SavePokemonListToFile();
             RefreshSavedPokemonDropdown();
         }
@@ -60,7 +60,7 @@ namespace PokemonGen1StatTracker
         }
 
 
-        private void yourPokemonDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        private void savedPokemonDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
             DisplaySavedPokemonInfo(
                 GetCurrentlySelectedSavedPokemon());
@@ -87,26 +87,53 @@ namespace PokemonGen1StatTracker
 
 
 
-        private void AddPokemonToList()
+        private void AddOrUpdatePokemonToList()
         {
-            yourPokemon.Add(new SaveData.Pokemon()
+            string[] names = GetYourPokemonNames();
+            string name = yourPokemonDropDown.Text;
+
+            if (names.Contains(name)) //update
             {
-                nickname = nicknameInput.Text,
-                species = pokemonDropDown.Text,
-                level = levelInput.Text,
+                SaveData.Pokemon pokemon =
+                    yourPokemon[Array.IndexOf(names, name)];
 
-                hpStat = hpTextBox.Text,
-                attackStat = attackTextBox.Text,
-                defenseStat = defenseTextBox.Text,
-                specialStat = specialTextBox.Text,
-                speedStat = speedTextBox.Text,
+                pokemon.level = levelInput.Text;
+                pokemon.hpStat = hpTextBox.Text;
 
-                hpExp = hpExpLabel.Text,
-                attackExp = attackExpLabel.Text,
-                defenseExp = defenseExpLabel.Text,
-                specialExp = specialExpLabel.Text,
-                speedExp = speedExpLabel.Text
-            });
+                pokemon.hpStat = hpTextBox.Text;
+                pokemon.attackStat = attackTextBox.Text;
+                pokemon.defenseStat = defenseTextBox.Text;
+                pokemon.specialStat = specialTextBox.Text;
+                pokemon.speedStat = speedTextBox.Text;
+
+                pokemon.hpExp = hpExpLabel.Text;
+                pokemon.attackExp = attackExpLabel.Text;
+                pokemon.defenseExp = defenseExpLabel.Text;
+                pokemon.specialExp = specialExpLabel.Text;
+                pokemon.speedExp = speedExpLabel.Text;
+            }
+            else //add
+            {
+                yourPokemon.Add(new SaveData.Pokemon()
+                {
+                    nickname = nicknameInput.Text,
+                    species = pokemonDropDown.Text,
+                    level = levelInput.Text,
+
+                    hpStat = hpTextBox.Text,
+                    attackStat = attackTextBox.Text,
+                    defenseStat = defenseTextBox.Text,
+                    specialStat = specialTextBox.Text,
+                    speedStat = speedTextBox.Text,
+
+                    hpExp = hpExpLabel.Text,
+                    attackExp = attackExpLabel.Text,
+                    defenseExp = defenseExpLabel.Text,
+                    specialExp = specialExpLabel.Text,
+                    speedExp = speedExpLabel.Text
+                });
+            }
+            
         }
 
         private void addExpFromVitaminButton_Click(object sender, EventArgs e)
