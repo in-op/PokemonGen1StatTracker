@@ -6,8 +6,18 @@ using System.Threading.Tasks;
 
 namespace PokemonGen1StatTracker
 {
-    public static class DVCalculator
+    public static class StatCalculator
     {
+
+        public static float StatExp(float exp)
+        {
+            return (float)Math.Floor(
+                (Math.Ceiling(Math.Sqrt(exp)))
+                / 4f);
+        }
+
+
+
         public static int MinHPDV(float stat, float lvl, float exp, float baseStat)
         {
             return (int)Math.Ceiling(

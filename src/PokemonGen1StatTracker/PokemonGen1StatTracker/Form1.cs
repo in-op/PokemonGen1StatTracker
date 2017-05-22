@@ -17,49 +17,106 @@ namespace PokemonGen1StatTracker
         public Form1()
         {
             InitializeComponent();
-            InitializePokemonDropDown();
+            InitializeDropDowns();
             Directory.SetCurrentDirectory(@"..\..");
         }
         
 
-        private void InitializePokemonDropDown()
+        private void InitializeDropDowns()
         {
             pokemonDropDown.Items.AddRange(PokemonData.Species);
+            koedPokemonDropDown.Items.AddRange(PokemonData.Species);
         }
+
+
+        private void addExpButton_Click(object sender, EventArgs e)
+        {
+            float.TryParse(hpExpInput.Text, out float hpExp);
+            float.TryParse(attackExpInput.Text, out float atkExp);
+            float.TryParse(defenseExpInput.Text, out float defExp);
+            float.TryParse(specialExpInput.Text, out float spcExp);
+            float.TryParse(speedExpInput.Text, out float spdExp);
+
+            int pokemonNumber = GetPokemonNumberFromKOedList();
+            var baseStats = PokemonData.AllBaseStats[pokemonNumber];
+
+            hpExp += baseStats.HP;
+            atkExp += baseStats.Attack;
+            defExp += baseStats.Defense;
+            spcExp += baseStats.Special;
+            spdExp += baseStats.Speed;
+
+            if (hpExp > 65535f) hpExp = 65535f;
+            if (atkExp > 65535f) atkExp = 65535f;
+            if (defExp > 65535f) defExp = 65535f;
+            if (spcExp > 65535f) spcExp = 65535f;
+            if (spdExp > 65535f) spdExp = 65535f;
+
+            hpExpInput.Text = hpExp.ToString();
+            attackExpInput.Text = atkExp.ToString();
+            defenseExpInput.Text = defExp.ToString();
+            specialExpInput.Text = spcExp.ToString();
+            speedExpInput.Text = spdExp.ToString();
+        }
+
 
         private void calcStatsButton_Click(object sender, EventArgs e)
         {
-            int pokemonNumber = int.MinValue;
-            for (int i = 0; i < 151; i++)
-                if (pokemonDropDown.Text == PokemonData.Species[i])
-                    pokemonNumber = i + 1;
-            
-            float.TryParse(hpTextBox.Text, out float hp);
+            int pokemonNumber = GetPokemonNumber();
+
             float.TryParse(levelInput.Text, out float lvl);
+            float.TryParse(hpTextBox.Text, out float hp);
             float.TryParse(attackTextBox.Text, out float atk);
             float.TryParse(defenseTextBox.Text, out float def);
             float.TryParse(specialTextBox.Text, out float spc);
             float.TryParse(speedTextBox.Text, out float spd);
-            
-            // BUG (for now) ALL STAT EXP SET TO 0
-            // FIX FIX FIX FIX for later
-            hpIvLabel.Text = DVCalculator.MinHPDV(hp, lvl, 0f, PokemonData.AllBaseStats[pokemonNumber].HP) + 
-                             "-" + DVCalculator.MaxHPDV(hp, lvl, 0f, PokemonData.AllBaseStats[pokemonNumber].HP);
 
-            attackIvLabel.Text = DVCalculator.MinNonHPDV(atk, lvl, 0f, PokemonData.AllBaseStats[pokemonNumber].Attack) +
-                                 "-" + DVCalculator.MaxNonHPDV(atk, lvl, 0f, PokemonData.AllBaseStats[pokemonNumber].Attack);
+            float.TryParse(hpExpInput.Text, out float hpExp);
+            float.TryParse(attackExpInput.Text, out float atkExp);
+            float.TryParse(defenseExpInput.Text, out float defExp);
+            float.TryParse(specialExpInput.Text, out float spcExp);
+            float.TryParse(speedExpInput.Text, out float spdExp);
 
-            defenseIvLabel.Text = DVCalculator.MinNonHPDV(def, lvl, 0f, PokemonData.AllBaseStats[pokemonNumber].Defense) +
-                                  "-" + DVCalculator.MaxNonHPDV(def, lvl, 0f, PokemonData.AllBaseStats[pokemonNumber].Defense);
+            hpExp = StatCalculator.StatExp(hpExp);
+            atkExp = StatCalculator.StatExp(atkExp);
+            defExp = StatCalculator.StatExp(defExp);
+            spcExp = StatCalculator.StatExp(spcExp);
+            spdExp = StatCalculator.StatExp(spdExp);
 
-            specialIvLabel.Text = DVCalculator.MinNonHPDV(spc, lvl, 0f, PokemonData.AllBaseStats[pokemonNumber].Special) +
-                                  "-" + DVCalculator.MaxNonHPDV(spc, lvl, 0f, PokemonData.AllBaseStats[pokemonNumber].Special);
 
-            speedIvLabel.Text = DVCalculator.MinNonHPDV(spd, lvl, 0f, PokemonData.AllBaseStats[pokemonNumber].Speed) +
-                                "-" + DVCalculator.MaxNonHPDV(spd, lvl, 0f, PokemonData.AllBaseStats[pokemonNumber].Speed);
+            hpIvLabel.Text = StatCalculator.MinHPDV(hp, lvl, hpExp, PokemonData.AllBaseStats[pokemonNumber].HP) + 
+                             "-" + StatCalculator.MaxHPDV(hp, lvl, hpExp, PokemonData.AllBaseStats[pokemonNumber].HP);
+
+            attackIvLabel.Text = StatCalculator.MinNonHPDV(atk, lvl, atkExp, PokemonData.AllBaseStats[pokemonNumber].Attack) +
+                                 "-" + StatCalculator.MaxNonHPDV(atk, lvl, atkExp, PokemonData.AllBaseStats[pokemonNumber].Attack);
+
+            defenseIvLabel.Text = StatCalculator.MinNonHPDV(def, lvl, defExp, PokemonData.AllBaseStats[pokemonNumber].Defense) +
+                                  "-" + StatCalculator.MaxNonHPDV(def, lvl, defExp, PokemonData.AllBaseStats[pokemonNumber].Defense);
+
+            specialIvLabel.Text = StatCalculator.MinNonHPDV(spc, lvl, spcExp, PokemonData.AllBaseStats[pokemonNumber].Special) +
+                                  "-" + StatCalculator.MaxNonHPDV(spc, lvl, spcExp, PokemonData.AllBaseStats[pokemonNumber].Special);
+
+            speedIvLabel.Text = StatCalculator.MinNonHPDV(spd, lvl, spdExp, PokemonData.AllBaseStats[pokemonNumber].Speed) +
+                                "-" + StatCalculator.MaxNonHPDV(spd, lvl, spdExp, PokemonData.AllBaseStats[pokemonNumber].Speed);
         }
 
         private void pokemonDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadSprite();
+            DisplayBaseStats();
+        }
+
+        private void DisplayBaseStats()
+        {
+            int pokemonNumber = GetPokemonNumber();
+            baseHpLabel.Text = PokemonData.AllBaseStats[pokemonNumber].HP.ToString();
+            baseAttackLabel.Text = PokemonData.AllBaseStats[pokemonNumber].Attack.ToString();
+            baseDefenseLabel.Text = PokemonData.AllBaseStats[pokemonNumber].Defense.ToString();
+            baseSpecialLabel.Text = PokemonData.AllBaseStats[pokemonNumber].Special.ToString();
+            baseSpeedLabel.Text = PokemonData.AllBaseStats[pokemonNumber].Speed.ToString();
+        }
+
+        private void LoadSprite()
         {
             try
             {
@@ -70,5 +127,23 @@ namespace PokemonGen1StatTracker
                 spriteBox.Load(".\\img\\Missingno.png");
             }
         }
+
+        private int GetPokemonNumber()
+        {
+            for (int i = 0; i < 151; i++)
+                if (pokemonDropDown.Text == PokemonData.Species[i])
+                    return i + 1;
+            return 1;
+        }
+
+        private int GetPokemonNumberFromKOedList()
+        {
+            for (int i = 0; i < 151; i++)
+                if (koedPokemonDropDown.Text == PokemonData.Species[i])
+                    return i + 1;
+            return 1;
+        }
+
+
     }
 }
