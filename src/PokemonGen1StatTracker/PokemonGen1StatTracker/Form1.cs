@@ -184,27 +184,52 @@ namespace PokemonGen1StatTracker
             spcExp = StatCalculator.StatExp(spcExp);
             spdExp = StatCalculator.StatExp(spdExp);
 
+            int minHP = StatCalculator.MinHPDV(hp, lvl, hpExp, PokemonData.AllBaseStats[pokemonNumber].HP);
+            int maxHP = StatCalculator.MaxHPDV(hp, lvl, hpExp, PokemonData.AllBaseStats[pokemonNumber].HP);
+            int minAttack = StatCalculator.MinNonHPDV(atk, lvl, atkExp, PokemonData.AllBaseStats[pokemonNumber].Attack);
+            int maxAttack = StatCalculator.MaxNonHPDV(atk, lvl, atkExp, PokemonData.AllBaseStats[pokemonNumber].Attack);
+            int minDefense = StatCalculator.MinNonHPDV(def, lvl, defExp, PokemonData.AllBaseStats[pokemonNumber].Defense);
+            int maxDefense = StatCalculator.MaxNonHPDV(def, lvl, defExp, PokemonData.AllBaseStats[pokemonNumber].Defense);
+            int minSpecial = StatCalculator.MinNonHPDV(spc, lvl, spcExp, PokemonData.AllBaseStats[pokemonNumber].Special);
+            int maxSpecial = StatCalculator.MaxNonHPDV(spc, lvl, spcExp, PokemonData.AllBaseStats[pokemonNumber].Special);
+            int minSpeed = StatCalculator.MinNonHPDV(spd, lvl, spdExp, PokemonData.AllBaseStats[pokemonNumber].Speed);
+            int maxSpeed = StatCalculator.MaxNonHPDV(spd, lvl, spdExp, PokemonData.AllBaseStats[pokemonNumber].Speed);
 
-            hpIvLabel.Text = StatCalculator.MinHPDV(hp, lvl, hpExp, PokemonData.AllBaseStats[pokemonNumber].HP) + 
-                             "-" + StatCalculator.MaxHPDV(hp, lvl, hpExp, PokemonData.AllBaseStats[pokemonNumber].HP);
-
-            attackIvLabel.Text = StatCalculator.MinNonHPDV(atk, lvl, atkExp, PokemonData.AllBaseStats[pokemonNumber].Attack) +
-                                 "-" + StatCalculator.MaxNonHPDV(atk, lvl, atkExp, PokemonData.AllBaseStats[pokemonNumber].Attack);
-
-            defenseIvLabel.Text = StatCalculator.MinNonHPDV(def, lvl, defExp, PokemonData.AllBaseStats[pokemonNumber].Defense) +
-                                  "-" + StatCalculator.MaxNonHPDV(def, lvl, defExp, PokemonData.AllBaseStats[pokemonNumber].Defense);
-
-            specialIvLabel.Text = StatCalculator.MinNonHPDV(spc, lvl, spcExp, PokemonData.AllBaseStats[pokemonNumber].Special) +
-                                  "-" + StatCalculator.MaxNonHPDV(spc, lvl, spcExp, PokemonData.AllBaseStats[pokemonNumber].Special);
-
-            speedIvLabel.Text = StatCalculator.MinNonHPDV(spd, lvl, spdExp, PokemonData.AllBaseStats[pokemonNumber].Speed) +
-                                "-" + StatCalculator.MaxNonHPDV(spd, lvl, spdExp, PokemonData.AllBaseStats[pokemonNumber].Speed);
+            hpIvLabel.Text = (minHP == maxHP) ? minHP.ToString() : minHP + "-" + maxHP;
+            attackIvLabel.Text = (minAttack == maxAttack) ? minAttack.ToString() : minAttack + "-" + maxAttack;
+            defenseIvLabel.Text = (minDefense == maxDefense) ? minDefense.ToString() : minDefense + "-" + maxDefense;
+            specialIvLabel.Text = (minSpecial == maxSpecial) ? minSpecial.ToString() : minSpecial + "-" + maxSpecial;
+            speedIvLabel.Text = (minSpeed == maxSpeed) ? minSpeed.ToString() : minSpeed + "-" + maxSpeed;
         }
 
         private void pokemonDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadSprite();
+            RemoveInfo();
             DisplayInfo();
+        }
+        private void RemoveInfo()
+        {
+            hpTextBox.Text = "";
+            attackTextBox.Text = "";
+            defenseTextBox.Text = "";
+            specialTextBox.Text = "";
+            speedTextBox.Text = "";
+
+            hpExpLabel.Text = "0";
+            attackExpLabel.Text = "0";
+            defenseExpLabel.Text = "0";
+            specialExpLabel.Text = "0";
+            speedExpLabel.Text = "0";
+
+            hpIvLabel.Text = "";
+            attackIvLabel.Text = "";
+            defenseIvLabel.Text = "";
+            specialIvLabel.Text = "";
+            speedIvLabel.Text = "";
+
+            levelInput.Text = "";
+            nicknameInput.Text = "";
         }
 
         private void DisplayInfo()
