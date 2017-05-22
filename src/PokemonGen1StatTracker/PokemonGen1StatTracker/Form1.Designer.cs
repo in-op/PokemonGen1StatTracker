@@ -29,18 +29,11 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.nicknameInput = new System.Windows.Forms.TextBox();
+            this.nicknameLabel = new System.Windows.Forms.Label();
             this.spriteBox = new System.Windows.Forms.PictureBox();
-            this.pokemonDropDown = new System.Windows.Forms.ComboBox();
-            this.speciesLabel = new System.Windows.Forms.Label();
             this.levelLabel = new System.Windows.Forms.Label();
             this.levelInput = new System.Windows.Forms.TextBox();
-            this.calcStatsButton = new System.Windows.Forms.Button();
-            this.hpIvLabel = new System.Windows.Forms.Label();
-            this.attackIvLabel = new System.Windows.Forms.Label();
-            this.defenseIvLabel = new System.Windows.Forms.Label();
-            this.specialIvLabel = new System.Windows.Forms.Label();
-            this.speedIvLabel = new System.Windows.Forms.Label();
-            this.statsLabel = new System.Windows.Forms.Label();
             this.hpLabel = new System.Windows.Forms.Label();
             this.attackLabel = new System.Windows.Forms.Label();
             this.defenseLabel = new System.Windows.Forms.Label();
@@ -51,25 +44,32 @@
             this.defenseTextBox = new System.Windows.Forms.TextBox();
             this.specialTextBox = new System.Windows.Forms.TextBox();
             this.speedTextBox = new System.Windows.Forms.TextBox();
-            this.ivLabel = new System.Windows.Forms.Label();
+            this.statsLabel = new System.Windows.Forms.Label();
             this.baseLabel = new System.Windows.Forms.Label();
+            this.ivLabel = new System.Windows.Forms.Label();
+            this.hpIvLabel = new System.Windows.Forms.Label();
+            this.attackIvLabel = new System.Windows.Forms.Label();
+            this.defenseIvLabel = new System.Windows.Forms.Label();
+            this.speedIvLabel = new System.Windows.Forms.Label();
+            this.specialIvLabel = new System.Windows.Forms.Label();
             this.statExpLabel = new System.Windows.Forms.Label();
-            this.speedExpInput = new System.Windows.Forms.TextBox();
             this.hpExpInput = new System.Windows.Forms.TextBox();
-            this.defenseExpInput = new System.Windows.Forms.TextBox();
             this.attackExpInput = new System.Windows.Forms.TextBox();
+            this.defenseExpInput = new System.Windows.Forms.TextBox();
             this.specialExpInput = new System.Windows.Forms.TextBox();
-            this.baseSpeedLabel = new System.Windows.Forms.Label();
-            this.baseDefenseLabel = new System.Windows.Forms.Label();
+            this.speedExpInput = new System.Windows.Forms.TextBox();
             this.baseHpLabel = new System.Windows.Forms.Label();
             this.baseAttackLabel = new System.Windows.Forms.Label();
+            this.baseDefenseLabel = new System.Windows.Forms.Label();
             this.baseSpecialLabel = new System.Windows.Forms.Label();
+            this.baseSpeedLabel = new System.Windows.Forms.Label();
+            this.calcStatsButton = new System.Windows.Forms.Button();
             this.koedPokemonDropDown = new System.Windows.Forms.ComboBox();
             this.addExpButton = new System.Windows.Forms.Button();
-            this.nicknameLabel = new System.Windows.Forms.Label();
-            this.nicknameInput = new System.Windows.Forms.TextBox();
             this.yourPokemonLabel = new System.Windows.Forms.Label();
             this.yourPokemonDropDown = new System.Windows.Forms.ComboBox();
+            this.speciesLabel = new System.Windows.Forms.Label();
+            this.pokemonDropDown = new System.Windows.Forms.ComboBox();
             this.addToYourPokemonButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spriteBox)).BeginInit();
@@ -148,6 +148,24 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1182, 753);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
+            // nicknameInput
+            // 
+            this.nicknameInput.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.nicknameInput.Location = new System.Drawing.Point(357, 18);
+            this.nicknameInput.Name = "nicknameInput";
+            this.nicknameInput.Size = new System.Drawing.Size(112, 22);
+            this.nicknameInput.TabIndex = 38;
+            // 
+            // nicknameLabel
+            // 
+            this.nicknameLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.nicknameLabel.AutoSize = true;
+            this.nicknameLabel.Location = new System.Drawing.Point(258, 21);
+            this.nicknameLabel.Name = "nicknameLabel";
+            this.nicknameLabel.Size = new System.Drawing.Size(74, 17);
+            this.nicknameLabel.TabIndex = 37;
+            this.nicknameLabel.Text = "Nickname:";
+            // 
             // spriteBox
             // 
             this.spriteBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -160,28 +178,6 @@
             this.spriteBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.spriteBox.TabIndex = 0;
             this.spriteBox.TabStop = false;
-            // 
-            // pokemonDropDown
-            // 
-            this.pokemonDropDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.tableLayoutPanel1.SetColumnSpan(this.pokemonDropDown, 2);
-            this.pokemonDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.pokemonDropDown.FormattingEnabled = true;
-            this.pokemonDropDown.Location = new System.Drawing.Point(357, 126);
-            this.pokemonDropDown.Name = "pokemonDropDown";
-            this.pokemonDropDown.Size = new System.Drawing.Size(130, 24);
-            this.pokemonDropDown.TabIndex = 1;
-            this.pokemonDropDown.SelectedIndexChanged += new System.EventHandler(this.pokemonDropDown_SelectedIndexChanged);
-            // 
-            // speciesLabel
-            // 
-            this.speciesLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.speciesLabel.AutoSize = true;
-            this.speciesLabel.Location = new System.Drawing.Point(264, 130);
-            this.speciesLabel.Name = "speciesLabel";
-            this.speciesLabel.Size = new System.Drawing.Size(62, 17);
-            this.speciesLabel.TabIndex = 2;
-            this.speciesLabel.Text = "Species:";
             // 
             // levelLabel
             // 
@@ -200,78 +196,6 @@
             this.levelInput.Name = "levelInput";
             this.levelInput.Size = new System.Drawing.Size(38, 22);
             this.levelInput.TabIndex = 4;
-            // 
-            // calcStatsButton
-            // 
-            this.calcStatsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tableLayoutPanel1.SetColumnSpan(this.calcStatsButton, 2);
-            this.calcStatsButton.Location = new System.Drawing.Point(51, 636);
-            this.calcStatsButton.Name = "calcStatsButton";
-            this.calcStatsButton.Size = new System.Drawing.Size(133, 35);
-            this.calcStatsButton.TabIndex = 17;
-            this.calcStatsButton.Text = "Calculate DVs";
-            this.calcStatsButton.UseVisualStyleBackColor = true;
-            this.calcStatsButton.Click += new System.EventHandler(this.calcStatsButton_Click);
-            // 
-            // hpIvLabel
-            // 
-            this.hpIvLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.hpIvLabel.AutoSize = true;
-            this.hpIvLabel.Location = new System.Drawing.Point(171, 364);
-            this.hpIvLabel.Name = "hpIvLabel";
-            this.hpIvLabel.Size = new System.Drawing.Size(12, 17);
-            this.hpIvLabel.TabIndex = 18;
-            this.hpIvLabel.Text = " ";
-            // 
-            // attackIvLabel
-            // 
-            this.attackIvLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.attackIvLabel.AutoSize = true;
-            this.attackIvLabel.Location = new System.Drawing.Point(289, 364);
-            this.attackIvLabel.Name = "attackIvLabel";
-            this.attackIvLabel.Size = new System.Drawing.Size(12, 17);
-            this.attackIvLabel.TabIndex = 19;
-            this.attackIvLabel.Text = " ";
-            // 
-            // defenseIvLabel
-            // 
-            this.defenseIvLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.defenseIvLabel.AutoSize = true;
-            this.defenseIvLabel.Location = new System.Drawing.Point(407, 364);
-            this.defenseIvLabel.Name = "defenseIvLabel";
-            this.defenseIvLabel.Size = new System.Drawing.Size(12, 17);
-            this.defenseIvLabel.TabIndex = 20;
-            this.defenseIvLabel.Text = " ";
-            // 
-            // specialIvLabel
-            // 
-            this.specialIvLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.specialIvLabel.AutoSize = true;
-            this.specialIvLabel.Location = new System.Drawing.Point(525, 364);
-            this.specialIvLabel.Name = "specialIvLabel";
-            this.specialIvLabel.Size = new System.Drawing.Size(12, 17);
-            this.specialIvLabel.TabIndex = 21;
-            this.specialIvLabel.Text = " ";
-            // 
-            // speedIvLabel
-            // 
-            this.speedIvLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.speedIvLabel.AutoSize = true;
-            this.speedIvLabel.Location = new System.Drawing.Point(643, 364);
-            this.speedIvLabel.Name = "speedIvLabel";
-            this.speedIvLabel.Size = new System.Drawing.Size(12, 17);
-            this.speedIvLabel.TabIndex = 22;
-            this.speedIvLabel.Text = " ";
-            // 
-            // statsLabel
-            // 
-            this.statsLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.statsLabel.AutoSize = true;
-            this.statsLabel.Location = new System.Drawing.Point(37, 267);
-            this.statsLabel.Name = "statsLabel";
-            this.statsLabel.Size = new System.Drawing.Size(44, 17);
-            this.statsLabel.TabIndex = 15;
-            this.statsLabel.Text = "Stats:";
             // 
             // hpLabel
             // 
@@ -363,15 +287,15 @@
             this.speedTextBox.Size = new System.Drawing.Size(100, 22);
             this.speedTextBox.TabIndex = 10;
             // 
-            // ivLabel
+            // statsLabel
             // 
-            this.ivLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.ivLabel.AutoSize = true;
-            this.ivLabel.Location = new System.Drawing.Point(40, 364);
-            this.ivLabel.Name = "ivLabel";
-            this.ivLabel.Size = new System.Drawing.Size(38, 17);
-            this.ivLabel.TabIndex = 16;
-            this.ivLabel.Text = "DVs:";
+            this.statsLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.statsLabel.AutoSize = true;
+            this.statsLabel.Location = new System.Drawing.Point(37, 267);
+            this.statsLabel.Name = "statsLabel";
+            this.statsLabel.Size = new System.Drawing.Size(44, 17);
+            this.statsLabel.TabIndex = 15;
+            this.statsLabel.Text = "Stats:";
             // 
             // baseLabel
             // 
@@ -383,6 +307,66 @@
             this.baseLabel.TabIndex = 23;
             this.baseLabel.Text = "Base Stats:";
             // 
+            // ivLabel
+            // 
+            this.ivLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ivLabel.AutoSize = true;
+            this.ivLabel.Location = new System.Drawing.Point(40, 364);
+            this.ivLabel.Name = "ivLabel";
+            this.ivLabel.Size = new System.Drawing.Size(38, 17);
+            this.ivLabel.TabIndex = 16;
+            this.ivLabel.Text = "DVs:";
+            // 
+            // hpIvLabel
+            // 
+            this.hpIvLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.hpIvLabel.AutoSize = true;
+            this.hpIvLabel.Location = new System.Drawing.Point(171, 364);
+            this.hpIvLabel.Name = "hpIvLabel";
+            this.hpIvLabel.Size = new System.Drawing.Size(12, 17);
+            this.hpIvLabel.TabIndex = 18;
+            this.hpIvLabel.Text = " ";
+            // 
+            // attackIvLabel
+            // 
+            this.attackIvLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.attackIvLabel.AutoSize = true;
+            this.attackIvLabel.Location = new System.Drawing.Point(289, 364);
+            this.attackIvLabel.Name = "attackIvLabel";
+            this.attackIvLabel.Size = new System.Drawing.Size(12, 17);
+            this.attackIvLabel.TabIndex = 19;
+            this.attackIvLabel.Text = " ";
+            // 
+            // defenseIvLabel
+            // 
+            this.defenseIvLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.defenseIvLabel.AutoSize = true;
+            this.defenseIvLabel.Location = new System.Drawing.Point(407, 364);
+            this.defenseIvLabel.Name = "defenseIvLabel";
+            this.defenseIvLabel.Size = new System.Drawing.Size(12, 17);
+            this.defenseIvLabel.TabIndex = 20;
+            this.defenseIvLabel.Text = " ";
+            // 
+            // speedIvLabel
+            // 
+            this.speedIvLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.speedIvLabel.AutoSize = true;
+            this.speedIvLabel.Location = new System.Drawing.Point(643, 364);
+            this.speedIvLabel.Name = "speedIvLabel";
+            this.speedIvLabel.Size = new System.Drawing.Size(12, 17);
+            this.speedIvLabel.TabIndex = 22;
+            this.speedIvLabel.Text = " ";
+            // 
+            // specialIvLabel
+            // 
+            this.specialIvLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.specialIvLabel.AutoSize = true;
+            this.specialIvLabel.Location = new System.Drawing.Point(525, 364);
+            this.specialIvLabel.Name = "specialIvLabel";
+            this.specialIvLabel.Size = new System.Drawing.Size(12, 17);
+            this.specialIvLabel.TabIndex = 21;
+            this.specialIvLabel.Text = " ";
+            // 
             // statExpLabel
             // 
             this.statExpLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -393,15 +377,6 @@
             this.statExpLabel.TabIndex = 24;
             this.statExpLabel.Text = "Stat Exp:";
             // 
-            // speedExpInput
-            // 
-            this.speedExpInput.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.speedExpInput.Location = new System.Drawing.Point(599, 314);
-            this.speedExpInput.Name = "speedExpInput";
-            this.speedExpInput.Size = new System.Drawing.Size(100, 22);
-            this.speedExpInput.TabIndex = 25;
-            this.speedExpInput.Text = "0";
-            // 
             // hpExpInput
             // 
             this.hpExpInput.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -410,15 +385,6 @@
             this.hpExpInput.Size = new System.Drawing.Size(100, 22);
             this.hpExpInput.TabIndex = 26;
             this.hpExpInput.Text = "0";
-            // 
-            // defenseExpInput
-            // 
-            this.defenseExpInput.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.defenseExpInput.Location = new System.Drawing.Point(363, 314);
-            this.defenseExpInput.Name = "defenseExpInput";
-            this.defenseExpInput.Size = new System.Drawing.Size(100, 22);
-            this.defenseExpInput.TabIndex = 27;
-            this.defenseExpInput.Text = "0";
             // 
             // attackExpInput
             // 
@@ -429,6 +395,15 @@
             this.attackExpInput.TabIndex = 28;
             this.attackExpInput.Text = "0";
             // 
+            // defenseExpInput
+            // 
+            this.defenseExpInput.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.defenseExpInput.Location = new System.Drawing.Point(363, 314);
+            this.defenseExpInput.Name = "defenseExpInput";
+            this.defenseExpInput.Size = new System.Drawing.Size(100, 22);
+            this.defenseExpInput.TabIndex = 27;
+            this.defenseExpInput.Text = "0";
+            // 
             // specialExpInput
             // 
             this.specialExpInput.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -438,25 +413,14 @@
             this.specialExpInput.TabIndex = 29;
             this.specialExpInput.Text = "0";
             // 
-            // baseSpeedLabel
+            // speedExpInput
             // 
-            this.baseSpeedLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.baseSpeedLabel.AutoSize = true;
-            this.baseSpeedLabel.Location = new System.Drawing.Point(643, 405);
-            this.baseSpeedLabel.Name = "baseSpeedLabel";
-            this.baseSpeedLabel.Size = new System.Drawing.Size(12, 17);
-            this.baseSpeedLabel.TabIndex = 30;
-            this.baseSpeedLabel.Text = " ";
-            // 
-            // baseDefenseLabel
-            // 
-            this.baseDefenseLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.baseDefenseLabel.AutoSize = true;
-            this.baseDefenseLabel.Location = new System.Drawing.Point(407, 405);
-            this.baseDefenseLabel.Name = "baseDefenseLabel";
-            this.baseDefenseLabel.Size = new System.Drawing.Size(12, 17);
-            this.baseDefenseLabel.TabIndex = 31;
-            this.baseDefenseLabel.Text = " ";
+            this.speedExpInput.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.speedExpInput.Location = new System.Drawing.Point(599, 314);
+            this.speedExpInput.Name = "speedExpInput";
+            this.speedExpInput.Size = new System.Drawing.Size(100, 22);
+            this.speedExpInput.TabIndex = 25;
+            this.speedExpInput.Text = "0";
             // 
             // baseHpLabel
             // 
@@ -478,6 +442,16 @@
             this.baseAttackLabel.TabIndex = 33;
             this.baseAttackLabel.Text = " ";
             // 
+            // baseDefenseLabel
+            // 
+            this.baseDefenseLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.baseDefenseLabel.AutoSize = true;
+            this.baseDefenseLabel.Location = new System.Drawing.Point(407, 405);
+            this.baseDefenseLabel.Name = "baseDefenseLabel";
+            this.baseDefenseLabel.Size = new System.Drawing.Size(12, 17);
+            this.baseDefenseLabel.TabIndex = 31;
+            this.baseDefenseLabel.Text = " ";
+            // 
             // baseSpecialLabel
             // 
             this.baseSpecialLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -487,6 +461,28 @@
             this.baseSpecialLabel.Size = new System.Drawing.Size(12, 17);
             this.baseSpecialLabel.TabIndex = 34;
             this.baseSpecialLabel.Text = " ";
+            // 
+            // baseSpeedLabel
+            // 
+            this.baseSpeedLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.baseSpeedLabel.AutoSize = true;
+            this.baseSpeedLabel.Location = new System.Drawing.Point(643, 405);
+            this.baseSpeedLabel.Name = "baseSpeedLabel";
+            this.baseSpeedLabel.Size = new System.Drawing.Size(12, 17);
+            this.baseSpeedLabel.TabIndex = 30;
+            this.baseSpeedLabel.Text = " ";
+            // 
+            // calcStatsButton
+            // 
+            this.calcStatsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tableLayoutPanel1.SetColumnSpan(this.calcStatsButton, 2);
+            this.calcStatsButton.Location = new System.Drawing.Point(51, 636);
+            this.calcStatsButton.Name = "calcStatsButton";
+            this.calcStatsButton.Size = new System.Drawing.Size(133, 35);
+            this.calcStatsButton.TabIndex = 17;
+            this.calcStatsButton.Text = "Calculate DVs";
+            this.calcStatsButton.UseVisualStyleBackColor = true;
+            this.calcStatsButton.Click += new System.EventHandler(this.calcStatsButton_Click);
             // 
             // koedPokemonDropDown
             // 
@@ -513,24 +509,6 @@
             this.addExpButton.UseVisualStyleBackColor = true;
             this.addExpButton.Click += new System.EventHandler(this.addExpButton_Click);
             // 
-            // nicknameLabel
-            // 
-            this.nicknameLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.nicknameLabel.AutoSize = true;
-            this.nicknameLabel.Location = new System.Drawing.Point(258, 21);
-            this.nicknameLabel.Name = "nicknameLabel";
-            this.nicknameLabel.Size = new System.Drawing.Size(74, 17);
-            this.nicknameLabel.TabIndex = 37;
-            this.nicknameLabel.Text = "Nickname:";
-            // 
-            // nicknameInput
-            // 
-            this.nicknameInput.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.nicknameInput.Location = new System.Drawing.Point(357, 18);
-            this.nicknameInput.Name = "nicknameInput";
-            this.nicknameInput.Size = new System.Drawing.Size(112, 22);
-            this.nicknameInput.TabIndex = 38;
-            // 
             // yourPokemonLabel
             // 
             this.yourPokemonLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -551,8 +529,30 @@
             this.yourPokemonDropDown.IntegralHeight = false;
             this.yourPokemonDropDown.Location = new System.Drawing.Point(947, 126);
             this.yourPokemonDropDown.Name = "yourPokemonDropDown";
-            this.yourPokemonDropDown.Size = new System.Drawing.Size(130, 24);
+            this.yourPokemonDropDown.Size = new System.Drawing.Size(200, 24);
             this.yourPokemonDropDown.TabIndex = 40;
+            // 
+            // speciesLabel
+            // 
+            this.speciesLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.speciesLabel.AutoSize = true;
+            this.speciesLabel.Location = new System.Drawing.Point(264, 130);
+            this.speciesLabel.Name = "speciesLabel";
+            this.speciesLabel.Size = new System.Drawing.Size(62, 17);
+            this.speciesLabel.TabIndex = 2;
+            this.speciesLabel.Text = "Species:";
+            // 
+            // pokemonDropDown
+            // 
+            this.pokemonDropDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tableLayoutPanel1.SetColumnSpan(this.pokemonDropDown, 2);
+            this.pokemonDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.pokemonDropDown.FormattingEnabled = true;
+            this.pokemonDropDown.Location = new System.Drawing.Point(357, 126);
+            this.pokemonDropDown.Name = "pokemonDropDown";
+            this.pokemonDropDown.Size = new System.Drawing.Size(130, 24);
+            this.pokemonDropDown.TabIndex = 1;
+            this.pokemonDropDown.SelectedIndexChanged += new System.EventHandler(this.pokemonDropDown_SelectedIndexChanged);
             // 
             // addToYourPokemonButton
             // 

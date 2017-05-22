@@ -192,12 +192,12 @@ namespace PokemonGen1StatTracker
         private string[] GetYourPokemonNames()
         {
             string[] output = new string[yourPokemon.Count];
-            for (int i = 0; i < output.Length; i++)
+            int length = output.Length;
+            for (int i = 0; i < length; i++)
             {
-                if (yourPokemon[i].nickname == "")
-                    output[i] = yourPokemon[i].species;
-                else
-                    output[i] = yourPokemon[i].nickname;
+                output[i] = yourPokemon[i].species;
+                if (yourPokemon[i].nickname != "")
+                    output[i] += " - " + yourPokemon[i].nickname;
             }
             return output;
         }
