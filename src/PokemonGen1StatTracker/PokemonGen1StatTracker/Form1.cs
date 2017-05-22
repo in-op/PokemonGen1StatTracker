@@ -9,25 +9,63 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using PokemonGeneration1.Source.PokemonData;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace PokemonGen1StatTracker
 {
     public partial class Form1 : Form
     {
+        private List<SaveData.Pokemon> yourPokemon;
+
         public Form1()
         {
             InitializeComponent();
-            InitializeDropDowns();
             Directory.SetCurrentDirectory(@"..\..");
+            LoadSavedPokemon();
+            InitializeDropDowns();
         }
+
         
 
         private void InitializeDropDowns()
         {
             pokemonDropDown.Items.AddRange(PokemonData.Species);
             koedPokemonDropDown.Items.AddRange(PokemonData.Species);
+            UpdateYourPokemonDropDown();
         }
 
+
+        private void addToYourPokemonButton_Click(object sender, EventArgs e)
+        {
+            AddYourPokemonToList();
+            SaveYourPokemonToFile();
+            UpdateYourPokemonDropDown();
+        }
+
+        
+
+        private void AddYourPokemonToList()
+        {
+            yourPokemon.Add(new SaveData.Pokemon()
+            {
+                nickname = nicknameInput.Text,
+                species = pokemonDropDown.Text,
+                level = levelInput.Text,
+
+                hpStat = hpTextBox.Text,
+                attackStat = attackTextBox.Text,
+                defenseStat = defenseTextBox.Text,
+                specialStat = specialTextBox.Text,
+                speedStat = speedTextBox.Text,
+
+                hpExp = hpExpInput.Text,
+                attackExp = attackExpInput.Text,
+                defenseExp = defenseExpInput.Text,
+                specialExp = specialExpInput.Text,
+                speedExp = speedExpInput.Text
+            });
+        }
 
         private void addExpButton_Click(object sender, EventArgs e)
         {
@@ -142,6 +180,55 @@ namespace PokemonGen1StatTracker
                 if (koedPokemonDropDown.Text == PokemonData.Species[i])
                     return i + 1;
             return 1;
+        }
+
+
+        private void UpdateYourPokemonDropDown()
+        {
+            yourPokemonDropDown.Items.Clear();
+            yourPokemonDropDown.Items.AddRange(GetYourPokemonNames());
+        }
+
+        private string[] GetYourPokemonNames()
+        {
+            string[] output = new string[yourPokemon.Count];
+            for (int i = 0; i < output.Length; i++)
+            {
+                if (yourPokemon[i].nickname == "")
+                    output[i] = yourPokemon[i].species;
+                else
+                    output[i] = yourPokemon[i].nickname;
+            }
+            return output;
+        }
+
+        private void LoadSavedPokemon()
+        {
+            if (File.Exists(@".\\save\\save.bin"))
+            {
+                IFormatter formatter = new BinaryFormatter();
+                Stream stream = new FileStream(@".\\save\\save.bin",
+                                          FileMode.Open,
+                                          FileAccess.Read,
+                                          FileShare.Read);
+                SaveData save = (SaveData)formatter.Deserialize(stream);
+                stream.Close();
+                yourPokemon = save.savedPokemon;
+            }
+            else
+                yourPokemon = new List<SaveData.Pokemon>(151);
+        }
+
+        private void SaveYourPokemonToFile()
+        {
+            SaveData save = new SaveData();
+            save.savedPokemon = yourPokemon;
+            IFormatter formatter = new BinaryFormatter();
+            Stream stream = new FileStream(@".\\save\\save.bin",
+                                     FileMode.Create,
+                                     FileAccess.Write, FileShare.None);
+            formatter.Serialize(stream, save);
+            stream.Close();
         }
 
 

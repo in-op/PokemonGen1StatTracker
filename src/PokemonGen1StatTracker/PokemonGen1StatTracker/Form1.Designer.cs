@@ -31,7 +31,7 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.spriteBox = new System.Windows.Forms.PictureBox();
             this.pokemonDropDown = new System.Windows.Forms.ComboBox();
-            this.pokemonLabel = new System.Windows.Forms.Label();
+            this.speciesLabel = new System.Windows.Forms.Label();
             this.levelLabel = new System.Windows.Forms.Label();
             this.levelInput = new System.Windows.Forms.TextBox();
             this.calcStatsButton = new System.Windows.Forms.Button();
@@ -68,6 +68,9 @@
             this.addExpButton = new System.Windows.Forms.Button();
             this.nicknameLabel = new System.Windows.Forms.Label();
             this.nicknameInput = new System.Windows.Forms.TextBox();
+            this.yourPokemonLabel = new System.Windows.Forms.Label();
+            this.yourPokemonDropDown = new System.Windows.Forms.ComboBox();
+            this.addToYourPokemonButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.spriteBox)).BeginInit();
             this.SuspendLayout();
@@ -88,8 +91,6 @@
             this.tableLayoutPanel1.Controls.Add(this.nicknameInput, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.nicknameLabel, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.spriteBox, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.pokemonDropDown, 5, 1);
-            this.tableLayoutPanel1.Controls.Add(this.pokemonLabel, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.levelLabel, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.levelInput, 5, 0);
             this.tableLayoutPanel1.Controls.Add(this.hpLabel, 1, 2);
@@ -124,6 +125,11 @@
             this.tableLayoutPanel1.Controls.Add(this.calcStatsButton, 0, 10);
             this.tableLayoutPanel1.Controls.Add(this.koedPokemonDropDown, 2, 8);
             this.tableLayoutPanel1.Controls.Add(this.addExpButton, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.yourPokemonLabel, 7, 1);
+            this.tableLayoutPanel1.Controls.Add(this.yourPokemonDropDown, 8, 1);
+            this.tableLayoutPanel1.Controls.Add(this.speciesLabel, 2, 1);
+            this.tableLayoutPanel1.Controls.Add(this.pokemonDropDown, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.addToYourPokemonButton, 5, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -161,21 +167,21 @@
             this.tableLayoutPanel1.SetColumnSpan(this.pokemonDropDown, 2);
             this.pokemonDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.pokemonDropDown.FormattingEnabled = true;
-            this.pokemonDropDown.Location = new System.Drawing.Point(593, 126);
+            this.pokemonDropDown.Location = new System.Drawing.Point(357, 126);
             this.pokemonDropDown.Name = "pokemonDropDown";
             this.pokemonDropDown.Size = new System.Drawing.Size(130, 24);
             this.pokemonDropDown.TabIndex = 1;
             this.pokemonDropDown.SelectedIndexChanged += new System.EventHandler(this.pokemonDropDown_SelectedIndexChanged);
             // 
-            // pokemonLabel
+            // speciesLabel
             // 
-            this.pokemonLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pokemonLabel.AutoSize = true;
-            this.pokemonLabel.Location = new System.Drawing.Point(495, 130);
-            this.pokemonLabel.Name = "pokemonLabel";
-            this.pokemonLabel.Size = new System.Drawing.Size(71, 17);
-            this.pokemonLabel.TabIndex = 2;
-            this.pokemonLabel.Text = "Pokemon:";
+            this.speciesLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.speciesLabel.AutoSize = true;
+            this.speciesLabel.Location = new System.Drawing.Point(264, 130);
+            this.speciesLabel.Name = "speciesLabel";
+            this.speciesLabel.Size = new System.Drawing.Size(62, 17);
+            this.speciesLabel.TabIndex = 2;
+            this.speciesLabel.Text = "Species:";
             // 
             // levelLabel
             // 
@@ -525,6 +531,41 @@
             this.nicknameInput.Size = new System.Drawing.Size(112, 22);
             this.nicknameInput.TabIndex = 38;
             // 
+            // yourPokemonLabel
+            // 
+            this.yourPokemonLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.yourPokemonLabel.AutoSize = true;
+            this.yourPokemonLabel.Location = new System.Drawing.Point(832, 130);
+            this.yourPokemonLabel.Name = "yourPokemonLabel";
+            this.yourPokemonLabel.Size = new System.Drawing.Size(105, 17);
+            this.yourPokemonLabel.TabIndex = 39;
+            this.yourPokemonLabel.Text = "Your Pokemon:";
+            // 
+            // yourPokemonDropDown
+            // 
+            this.yourPokemonDropDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tableLayoutPanel1.SetColumnSpan(this.yourPokemonDropDown, 2);
+            this.yourPokemonDropDown.DropDownHeight = 300;
+            this.yourPokemonDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.yourPokemonDropDown.FormattingEnabled = true;
+            this.yourPokemonDropDown.IntegralHeight = false;
+            this.yourPokemonDropDown.Location = new System.Drawing.Point(947, 126);
+            this.yourPokemonDropDown.Name = "yourPokemonDropDown";
+            this.yourPokemonDropDown.Size = new System.Drawing.Size(130, 24);
+            this.yourPokemonDropDown.TabIndex = 40;
+            // 
+            // addToYourPokemonButton
+            // 
+            this.addToYourPokemonButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tableLayoutPanel1.SetColumnSpan(this.addToYourPokemonButton, 2);
+            this.addToYourPokemonButton.Location = new System.Drawing.Point(593, 121);
+            this.addToYourPokemonButton.Name = "addToYourPokemonButton";
+            this.addToYourPokemonButton.Size = new System.Drawing.Size(186, 34);
+            this.addToYourPokemonButton.TabIndex = 41;
+            this.addToYourPokemonButton.Text = "Add to your Pokemon";
+            this.addToYourPokemonButton.UseVisualStyleBackColor = true;
+            this.addToYourPokemonButton.Click += new System.EventHandler(this.addToYourPokemonButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -545,7 +586,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.PictureBox spriteBox;
         private System.Windows.Forms.ComboBox pokemonDropDown;
-        private System.Windows.Forms.Label pokemonLabel;
+        private System.Windows.Forms.Label speciesLabel;
         private System.Windows.Forms.Label levelLabel;
         private System.Windows.Forms.TextBox levelInput;
         private System.Windows.Forms.TextBox hpTextBox;
@@ -582,6 +623,9 @@
         private System.Windows.Forms.Button addExpButton;
         private System.Windows.Forms.TextBox nicknameInput;
         private System.Windows.Forms.Label nicknameLabel;
+        private System.Windows.Forms.Label yourPokemonLabel;
+        private System.Windows.Forms.ComboBox yourPokemonDropDown;
+        private System.Windows.Forms.Button addToYourPokemonButton;
     }
 }
 
