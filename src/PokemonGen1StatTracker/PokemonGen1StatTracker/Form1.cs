@@ -14,15 +14,15 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace PokemonGen1StatTracker
 {
-    public partial class Form1 : Form
+    public partial class StatTrackerForm : Form
     {
         private List<SaveData.Pokemon> yourPokemon;
 
-        public Form1()
+        public StatTrackerForm()
         {
             InitializeComponent();
             Directory.SetCurrentDirectory(@"..\..");
-            LoadSavedPokemon();
+            LoadSavedPokemonList();
             InitializeDropDowns();
         }
 
@@ -32,20 +32,20 @@ namespace PokemonGen1StatTracker
         {
             pokemonDropDown.Items.AddRange(PokemonData.Species);
             koedPokemonDropDown.Items.AddRange(PokemonData.Species);
-            UpdateYourPokemonDropDown();
+            RefreshSavedPokemonDropdown();
         }
 
 
         private void addToYourPokemonButton_Click(object sender, EventArgs e)
         {
-            AddYourPokemonToList();
-            SaveYourPokemonToFile();
-            UpdateYourPokemonDropDown();
+            AddPokemonToList();
+            SavePokemonListToFile();
+            RefreshSavedPokemonDropdown();
         }
 
         
 
-        private void AddYourPokemonToList()
+        private void AddPokemonToList()
         {
             yourPokemon.Add(new SaveData.Pokemon()
             {
@@ -141,12 +141,30 @@ namespace PokemonGen1StatTracker
         private void pokemonDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadSprite();
-            DisplayBaseStats();
+            DisplayInfo();
         }
 
-        private void DisplayBaseStats()
+        private void DisplayInfo()
         {
             int pokemonNumber = GetPokemonNumber();
+            DisplayNumber(pokemonNumber);
+            DisplayTypes(pokemonNumber);
+            DisplayBaseStats(pokemonNumber);
+        }
+
+        private void DisplayNumber(int pokemonNumber)
+        {
+            numberDisplayLabel.Text = pokemonNumber.ToString();
+        }
+
+        private void DisplayTypes(int pokemonNumber)
+        {
+            type1Label.Text = PokemonData.TypeToString(PokemonData.AllTypes[pokemonNumber][0]);
+            type2Label.Text = PokemonData.TypeToString(PokemonData.AllTypes[pokemonNumber][1]);
+        }
+
+        private void DisplayBaseStats(int pokemonNumber)
+        {
             baseHpLabel.Text = PokemonData.AllBaseStats[pokemonNumber].HP.ToString();
             baseAttackLabel.Text = PokemonData.AllBaseStats[pokemonNumber].Attack.ToString();
             baseDefenseLabel.Text = PokemonData.AllBaseStats[pokemonNumber].Defense.ToString();
@@ -183,7 +201,7 @@ namespace PokemonGen1StatTracker
         }
 
 
-        private void UpdateYourPokemonDropDown()
+        private void RefreshSavedPokemonDropdown()
         {
             yourPokemonDropDown.Items.Clear();
             yourPokemonDropDown.Items.AddRange(GetYourPokemonNames());
@@ -202,7 +220,7 @@ namespace PokemonGen1StatTracker
             return output;
         }
 
-        private void LoadSavedPokemon()
+        private void LoadSavedPokemonList()
         {
             if (File.Exists(@".\\save\\save.bin"))
             {
@@ -219,7 +237,7 @@ namespace PokemonGen1StatTracker
                 yourPokemon = new List<SaveData.Pokemon>(151);
         }
 
-        private void SaveYourPokemonToFile()
+        private void SavePokemonListToFile()
         {
             SaveData save = new SaveData();
             save.savedPokemon = yourPokemon;
