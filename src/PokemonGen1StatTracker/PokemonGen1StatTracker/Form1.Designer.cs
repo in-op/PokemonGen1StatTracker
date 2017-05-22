@@ -142,7 +142,7 @@
             this.savePokemonButton.TabIndex = 41;
             this.savePokemonButton.Text = "Save Pokemon";
             this.savePokemonButton.UseVisualStyleBackColor = true;
-            this.savePokemonButton.Click += new System.EventHandler(this.addToYourPokemonButton_Click);
+            this.savePokemonButton.Click += new System.EventHandler(this.savePokemonButton_Click);
             // 
             // yourPokemonDropDown
             // 
@@ -156,6 +156,7 @@
             this.yourPokemonDropDown.Name = "yourPokemonDropDown";
             this.yourPokemonDropDown.Size = new System.Drawing.Size(200, 24);
             this.yourPokemonDropDown.TabIndex = 40;
+            this.yourPokemonDropDown.SelectedIndexChanged += new System.EventHandler(this.yourPokemonDropDown_SelectedIndexChanged);
             // 
             // savedPokemonLabel
             // 

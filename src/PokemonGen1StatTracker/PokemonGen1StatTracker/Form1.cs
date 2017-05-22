@@ -36,14 +36,56 @@ namespace PokemonGen1StatTracker
         }
 
 
-        private void addToYourPokemonButton_Click(object sender, EventArgs e)
+        private void savePokemonButton_Click(object sender, EventArgs e)
         {
             AddPokemonToList();
             SavePokemonListToFile();
             RefreshSavedPokemonDropdown();
         }
 
-        
+        private SaveData.Pokemon GetCurrentlySelectedSavedPokemon()
+        {
+            string name = yourPokemonDropDown.Text;
+            string[] names = GetYourPokemonNames();
+            int index = 0;
+            for (int i = 0; i < names.Length; i++)
+            {
+                if (names[i] == name)
+                {
+                    index = i;
+                    break;
+                }
+            }
+            return yourPokemon[index];
+        }
+
+
+        private void yourPokemonDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DisplaySavedPokemonInfo(
+                GetCurrentlySelectedSavedPokemon());
+        }
+
+        private void DisplaySavedPokemonInfo(SaveData.Pokemon pokemon)
+        {
+            pokemonDropDown.Text = pokemon.species;
+            nicknameInput.Text = pokemon.nickname;
+            levelInput.Text = pokemon.level;
+
+            hpTextBox.Text = pokemon.hpStat;
+            attackTextBox.Text = pokemon.attackStat;
+            defenseTextBox.Text = pokemon.defenseStat;
+            specialTextBox.Text = pokemon.specialStat;
+            speedTextBox.Text = pokemon.speedStat;
+
+            hpExpLabel.Text = pokemon.hpExp;
+            attackExpLabel.Text = pokemon.attackExp;
+            defenseExpLabel.Text = pokemon.defenseExp;
+            specialExpLabel.Text = pokemon.specialExp;
+            speedExpLabel.Text = pokemon.speedExp;
+        }
+
+
 
         private void AddPokemonToList()
         {
