@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,7 @@ namespace PokemonGen1StatTracker
         {
             InitializeComponent();
             InitializePokemonDropDown();
+            Directory.SetCurrentDirectory(@"..\..");
         }
         
 
@@ -57,8 +59,16 @@ namespace PokemonGen1StatTracker
                                 "-" + DVCalculator.MaxNonHPDV(spd, lvl, 0f, PokemonData.AllBaseStats[pokemonNumber].Speed);
         }
 
-        
-
-        
+        private void pokemonDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                spriteBox.Load(".\\img\\" + pokemonDropDown.Text + ".png");
+            }
+            catch
+            {
+                spriteBox.Load(".\\img\\Missingno.png");
+            }
+        }
     }
 }

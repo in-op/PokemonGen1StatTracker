@@ -109,25 +109,28 @@
             // 
             // spriteBox
             // 
+            this.spriteBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.spriteBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tableLayoutPanel1.SetColumnSpan(this.spriteBox, 2);
-            this.spriteBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.spriteBox.Location = new System.Drawing.Point(3, 3);
             this.spriteBox.Name = "spriteBox";
             this.tableLayoutPanel1.SetRowSpan(this.spriteBox, 2);
             this.spriteBox.Size = new System.Drawing.Size(230, 182);
+            this.spriteBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.spriteBox.TabIndex = 0;
             this.spriteBox.TabStop = false;
             // 
             // pokemonDropDown
             // 
-            this.pokemonDropDown.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pokemonDropDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.tableLayoutPanel1.SetColumnSpan(this.pokemonDropDown, 2);
             this.pokemonDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.pokemonDropDown.FormattingEnabled = true;
             this.pokemonDropDown.Location = new System.Drawing.Point(593, 128);
             this.pokemonDropDown.Name = "pokemonDropDown";
-            this.pokemonDropDown.Size = new System.Drawing.Size(112, 24);
+            this.pokemonDropDown.Size = new System.Drawing.Size(130, 24);
             this.pokemonDropDown.TabIndex = 1;
+            this.pokemonDropDown.SelectedIndexChanged += new System.EventHandler(this.pokemonDropDown_SelectedIndexChanged);
             // 
             // pokemonLabel
             // 
