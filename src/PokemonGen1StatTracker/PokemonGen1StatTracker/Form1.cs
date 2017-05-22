@@ -25,6 +25,15 @@ namespace PokemonGen1StatTracker
             pokemonDropDown.Items.AddRange(PokemonSpecies);
         }
 
+        private void calcStatsButton_Click(object sender, EventArgs e)
+        {
+            hpIvLabel.Text = "100";
+            attackIvLabel.Text = "100";
+            defenseIvLabel.Text = "100";
+            specialIvLabel.Text = "100";
+            speedIvLabel.Text = "100";
+        }
+
         private static readonly string[] PokemonSpecies = new string[]
         {
             "Bulbasaur", // 1
@@ -179,7 +188,7 @@ namespace PokemonGen1StatTracker
             "Mewtwo",
             "Mew"
         };
-        
+
         
     }
 }

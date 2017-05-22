@@ -276,6 +276,7 @@
             this.calcStatsButton.TabIndex = 17;
             this.calcStatsButton.Text = "Calculate";
             this.calcStatsButton.UseVisualStyleBackColor = true;
+            this.calcStatsButton.Click += new System.EventHandler(this.calcStatsButton_Click);
             // 
             // hpIvLabel
             // 
