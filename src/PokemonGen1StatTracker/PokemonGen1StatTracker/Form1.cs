@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PokemonGeneration1.Source.PokemonData;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -68,7 +67,68 @@ namespace PokemonGen1StatTracker
             });
         }
 
-        private void addExpButton_Click(object sender, EventArgs e)
+        private void addExpFromVitaminButton_Click(object sender, EventArgs e)
+        {
+            string vitamin = vitaminDropDown.Text;
+
+            float.TryParse(hpExpLabel.Text, out float hpExp);
+            float.TryParse(attackExpLabel.Text, out float atkExp);
+            float.TryParse(defenseExpLabel.Text, out float defExp);
+            float.TryParse(specialExpLabel.Text, out float spcExp);
+            float.TryParse(speedExpLabel.Text, out float spdExp);
+
+            switch(vitamin)
+            {
+                case "HP Up":
+                    if (hpExp < 25600f)
+                    {
+                        hpExp += 2560f;
+                        if (hpExp > 25600f)
+                            hpExp = 25600f;
+                    }
+                    break;
+                case "Protein":
+                    if (atkExp < 25600f)
+                    {
+                        atkExp += 2560f;
+                        if (atkExp > 25600f)
+                            atkExp = 25600f;
+                    }
+                    break;
+                case "Iron":
+                    if (defExp < 25600f)
+                    {
+                        defExp += 2560f;
+                        if (defExp > 25600f)
+                            defExp = 25600f;
+                    }
+                    break;
+                case "Calcium":
+                    if (spcExp < 25600f)
+                    {
+                        spcExp += 2560f;
+                        if (spcExp > 25600f)
+                            spcExp = 25600f;
+                    }
+                    break;
+                case "Carbos":
+                    if (spdExp < 25600f)
+                    {
+                        spdExp += 2560f;
+                        if (spdExp > 25600f)
+                            spdExp = 25600f;
+                    }
+                    break;
+            }
+
+            hpExpLabel.Text = hpExp.ToString();
+            attackExpLabel.Text = atkExp.ToString();
+            defenseExpLabel.Text = defExp.ToString();
+            specialExpLabel.Text = spcExp.ToString();
+            speedExpLabel.Text = spdExp.ToString();
+        }
+
+        private void addExpFromDefeatingPokemonButton_Click(object sender, EventArgs e)
         {
             int pokemonNumber = GetPokemonNumberFromKOedList();
             if (pokemonNumber == 0) return;
@@ -252,6 +312,6 @@ namespace PokemonGen1StatTracker
             stream.Close();
         }
 
-
+        
     }
 }

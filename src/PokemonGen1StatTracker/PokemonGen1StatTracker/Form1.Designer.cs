@@ -36,7 +36,7 @@
             this.savePokemonButton = new System.Windows.Forms.Button();
             this.yourPokemonDropDown = new System.Windows.Forms.ComboBox();
             this.savedPokemonLabel = new System.Windows.Forms.Label();
-            this.addExpButton = new System.Windows.Forms.Button();
+            this.addExpFromDefeatingPokemonButton = new System.Windows.Forms.Button();
             this.koedPokemonDropDown = new System.Windows.Forms.ComboBox();
             this.calcDVsButton = new System.Windows.Forms.Button();
             this.baseSpeedLabel = new System.Windows.Forms.Label();
@@ -98,7 +98,7 @@
             this.tableLayoutPanel1.SetColumnSpan(this.pokemonDropDown, 2);
             this.pokemonDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.pokemonDropDown.FormattingEnabled = true;
-            this.pokemonDropDown.Location = new System.Drawing.Point(357, 9);
+            this.pokemonDropDown.Location = new System.Drawing.Point(357, 10);
             this.pokemonDropDown.Name = "pokemonDropDown";
             this.pokemonDropDown.Size = new System.Drawing.Size(130, 24);
             this.pokemonDropDown.TabIndex = 1;
@@ -167,17 +167,17 @@
             this.savedPokemonLabel.TabIndex = 39;
             this.savedPokemonLabel.Text = "Saved Pokemon:";
             // 
-            // addExpButton
+            // addExpFromDefeatingPokemonButton
             // 
-            this.addExpButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tableLayoutPanel1.SetColumnSpan(this.addExpButton, 2);
-            this.addExpButton.Location = new System.Drawing.Point(25, 479);
-            this.addExpButton.Name = "addExpButton";
-            this.addExpButton.Size = new System.Drawing.Size(186, 34);
-            this.addExpButton.TabIndex = 1;
-            this.addExpButton.Text = "Add exp from defeating:";
-            this.addExpButton.UseVisualStyleBackColor = true;
-            this.addExpButton.Click += new System.EventHandler(this.addExpButton_Click);
+            this.addExpFromDefeatingPokemonButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tableLayoutPanel1.SetColumnSpan(this.addExpFromDefeatingPokemonButton, 2);
+            this.addExpFromDefeatingPokemonButton.Location = new System.Drawing.Point(25, 479);
+            this.addExpFromDefeatingPokemonButton.Name = "addExpFromDefeatingPokemonButton";
+            this.addExpFromDefeatingPokemonButton.Size = new System.Drawing.Size(186, 34);
+            this.addExpFromDefeatingPokemonButton.TabIndex = 1;
+            this.addExpFromDefeatingPokemonButton.Text = "Add exp from defeating:";
+            this.addExpFromDefeatingPokemonButton.UseVisualStyleBackColor = true;
+            this.addExpFromDefeatingPokemonButton.Click += new System.EventHandler(this.addExpFromDefeatingPokemonButton_Click);
             // 
             // koedPokemonDropDown
             // 
@@ -187,7 +187,7 @@
             this.koedPokemonDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.koedPokemonDropDown.FormattingEnabled = true;
             this.koedPokemonDropDown.IntegralHeight = false;
-            this.koedPokemonDropDown.Location = new System.Drawing.Point(53, 523);
+            this.koedPokemonDropDown.Location = new System.Drawing.Point(53, 524);
             this.koedPokemonDropDown.Name = "koedPokemonDropDown";
             this.koedPokemonDropDown.Size = new System.Drawing.Size(130, 24);
             this.koedPokemonDropDown.TabIndex = 36;
@@ -494,7 +494,7 @@
             this.tableLayoutPanel1.Controls.Add(this.baseSpecialLabel, 4, 9);
             this.tableLayoutPanel1.Controls.Add(this.baseSpeedLabel, 5, 9);
             this.tableLayoutPanel1.Controls.Add(this.calcDVsButton, 0, 13);
-            this.tableLayoutPanel1.Controls.Add(this.addExpButton, 0, 11);
+            this.tableLayoutPanel1.Controls.Add(this.addExpFromDefeatingPokemonButton, 0, 11);
             this.tableLayoutPanel1.Controls.Add(this.savedPokemonLabel, 7, 4);
             this.tableLayoutPanel1.Controls.Add(this.yourPokemonDropDown, 8, 4);
             this.tableLayoutPanel1.Controls.Add(this.speciesLabel, 2, 0);
@@ -648,6 +648,7 @@
             this.addExpFromVitaminButton.TabIndex = 52;
             this.addExpFromVitaminButton.Text = "Add exp from vitamin:";
             this.addExpFromVitaminButton.UseVisualStyleBackColor = true;
+            this.addExpFromVitaminButton.Click += new System.EventHandler(this.addExpFromVitaminButton_Click);
             // 
             // vitaminDropDown
             // 
@@ -657,7 +658,7 @@
             this.vitaminDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.vitaminDropDown.FormattingEnabled = true;
             this.vitaminDropDown.IntegralHeight = false;
-            this.vitaminDropDown.Location = new System.Drawing.Point(289, 524);
+            this.vitaminDropDown.Location = new System.Drawing.Point(289, 523);
             this.vitaminDropDown.Name = "vitaminDropDown";
             this.vitaminDropDown.Size = new System.Drawing.Size(130, 24);
             this.vitaminDropDown.TabIndex = 53;
@@ -709,7 +710,7 @@
         private System.Windows.Forms.Label baseSpeedLabel;
         private System.Windows.Forms.Button calcDVsButton;
         private System.Windows.Forms.ComboBox koedPokemonDropDown;
-        private System.Windows.Forms.Button addExpButton;
+        private System.Windows.Forms.Button addExpFromDefeatingPokemonButton;
         private System.Windows.Forms.Label savedPokemonLabel;
         private System.Windows.Forms.ComboBox yourPokemonDropDown;
         private System.Windows.Forms.Label nicknameLabel;
