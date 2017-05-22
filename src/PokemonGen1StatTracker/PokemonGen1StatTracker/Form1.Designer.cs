@@ -34,12 +34,12 @@
             this.pokemonLabel = new System.Windows.Forms.Label();
             this.levelLabel = new System.Windows.Forms.Label();
             this.levelInput = new System.Windows.Forms.TextBox();
-            this.hpLabel = new System.Windows.Forms.Label();
             this.hpTextBox = new System.Windows.Forms.TextBox();
             this.attackTextBox = new System.Windows.Forms.TextBox();
             this.defenseTextBox = new System.Windows.Forms.TextBox();
             this.specialTextBox = new System.Windows.Forms.TextBox();
             this.speedTextBox = new System.Windows.Forms.TextBox();
+            this.hpLabel = new System.Windows.Forms.Label();
             this.attackLabel = new System.Windows.Forms.Label();
             this.defenseLabel = new System.Windows.Forms.Label();
             this.specialLabel = new System.Windows.Forms.Label();
@@ -124,7 +124,7 @@
             this.pokemonDropDown.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pokemonDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.pokemonDropDown.FormattingEnabled = true;
-            this.pokemonDropDown.Location = new System.Drawing.Point(593, 129);
+            this.pokemonDropDown.Location = new System.Drawing.Point(593, 128);
             this.pokemonDropDown.Name = "pokemonDropDown";
             this.pokemonDropDown.Size = new System.Drawing.Size(112, 24);
             this.pokemonDropDown.TabIndex = 1;
@@ -156,16 +156,6 @@
             this.levelInput.Name = "levelInput";
             this.levelInput.Size = new System.Drawing.Size(100, 22);
             this.levelInput.TabIndex = 4;
-            // 
-            // hpLabel
-            // 
-            this.hpLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.hpLabel.AutoSize = true;
-            this.hpLabel.Location = new System.Drawing.Point(281, 226);
-            this.hpLabel.Name = "hpLabel";
-            this.hpLabel.Size = new System.Drawing.Size(27, 17);
-            this.hpLabel.TabIndex = 5;
-            this.hpLabel.Text = "HP";
             // 
             // hpTextBox
             // 
@@ -206,6 +196,16 @@
             this.speedTextBox.Name = "speedTextBox";
             this.speedTextBox.Size = new System.Drawing.Size(100, 22);
             this.speedTextBox.TabIndex = 10;
+            // 
+            // hpLabel
+            // 
+            this.hpLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.hpLabel.AutoSize = true;
+            this.hpLabel.Location = new System.Drawing.Point(281, 226);
+            this.hpLabel.Name = "hpLabel";
+            this.hpLabel.Size = new System.Drawing.Size(27, 17);
+            this.hpLabel.TabIndex = 5;
+            this.hpLabel.Text = "HP";
             // 
             // attackLabel
             // 
