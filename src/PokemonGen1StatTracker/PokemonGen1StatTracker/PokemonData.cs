@@ -8,6 +8,18 @@ namespace PokemonGen1StatTracker
 {
     internal static class PokemonData
     {
+
+        internal static string[] Vitamins = new string[]
+        {
+            "HP Up",
+            "Protein",
+            "Iron",
+            "Calcium",
+            "Carbos"
+        };
+
+
+
         internal enum Types
         {
             NONE,

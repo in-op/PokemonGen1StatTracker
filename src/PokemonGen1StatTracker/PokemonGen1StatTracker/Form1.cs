@@ -33,6 +33,7 @@ namespace PokemonGen1StatTracker
             pokemonDropDown.Items.AddRange(PokemonData.Species);
             koedPokemonDropDown.Items.AddRange(PokemonData.Species);
             RefreshSavedPokemonDropdown();
+            vitaminDropDown.Items.AddRange(PokemonData.Vitamins);
         }
 
 
@@ -59,25 +60,27 @@ namespace PokemonGen1StatTracker
                 specialStat = specialTextBox.Text,
                 speedStat = speedTextBox.Text,
 
-                hpExp = hpExpInput.Text,
-                attackExp = attackExpInput.Text,
-                defenseExp = defenseExpInput.Text,
-                specialExp = specialExpInput.Text,
-                speedExp = speedExpInput.Text
+                hpExp = hpExpLabel.Text,
+                attackExp = attackExpLabel.Text,
+                defenseExp = defenseExpLabel.Text,
+                specialExp = specialExpLabel.Text,
+                speedExp = speedExpLabel.Text
             });
         }
 
         private void addExpButton_Click(object sender, EventArgs e)
         {
-            float.TryParse(hpExpInput.Text, out float hpExp);
-            float.TryParse(attackExpInput.Text, out float atkExp);
-            float.TryParse(defenseExpInput.Text, out float defExp);
-            float.TryParse(specialExpInput.Text, out float spcExp);
-            float.TryParse(speedExpInput.Text, out float spdExp);
-
             int pokemonNumber = GetPokemonNumberFromKOedList();
+            if (pokemonNumber == 0) return;
+
             var baseStats = PokemonData.AllBaseStats[pokemonNumber];
 
+            float.TryParse(hpExpLabel.Text, out float hpExp);
+            float.TryParse(attackExpLabel.Text, out float atkExp);
+            float.TryParse(defenseExpLabel.Text, out float defExp);
+            float.TryParse(specialExpLabel.Text, out float spcExp);
+            float.TryParse(speedExpLabel.Text, out float spdExp);
+            
             hpExp += baseStats.HP;
             atkExp += baseStats.Attack;
             defExp += baseStats.Defense;
@@ -90,11 +93,11 @@ namespace PokemonGen1StatTracker
             if (spcExp > 65535f) spcExp = 65535f;
             if (spdExp > 65535f) spdExp = 65535f;
 
-            hpExpInput.Text = hpExp.ToString();
-            attackExpInput.Text = atkExp.ToString();
-            defenseExpInput.Text = defExp.ToString();
-            specialExpInput.Text = spcExp.ToString();
-            speedExpInput.Text = spdExp.ToString();
+            hpExpLabel.Text = hpExp.ToString();
+            attackExpLabel.Text = atkExp.ToString();
+            defenseExpLabel.Text = defExp.ToString();
+            specialExpLabel.Text = spcExp.ToString();
+            speedExpLabel.Text = spdExp.ToString();
         }
 
 
@@ -109,11 +112,11 @@ namespace PokemonGen1StatTracker
             float.TryParse(specialTextBox.Text, out float spc);
             float.TryParse(speedTextBox.Text, out float spd);
 
-            float.TryParse(hpExpInput.Text, out float hpExp);
-            float.TryParse(attackExpInput.Text, out float atkExp);
-            float.TryParse(defenseExpInput.Text, out float defExp);
-            float.TryParse(specialExpInput.Text, out float spcExp);
-            float.TryParse(speedExpInput.Text, out float spdExp);
+            float.TryParse(hpExpLabel.Text, out float hpExp);
+            float.TryParse(attackExpLabel.Text, out float atkExp);
+            float.TryParse(defenseExpLabel.Text, out float defExp);
+            float.TryParse(specialExpLabel.Text, out float spcExp);
+            float.TryParse(speedExpLabel.Text, out float spdExp);
 
             hpExp = StatCalculator.StatExp(hpExp);
             atkExp = StatCalculator.StatExp(atkExp);
@@ -197,7 +200,7 @@ namespace PokemonGen1StatTracker
             for (int i = 0; i < 151; i++)
                 if (koedPokemonDropDown.Text == PokemonData.Species[i])
                     return i + 1;
-            return 1;
+            return 0;
         }
 
 

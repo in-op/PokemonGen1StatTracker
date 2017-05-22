@@ -44,11 +44,6 @@
             this.baseDefenseLabel = new System.Windows.Forms.Label();
             this.baseAttackLabel = new System.Windows.Forms.Label();
             this.baseHpLabel = new System.Windows.Forms.Label();
-            this.speedExpInput = new System.Windows.Forms.TextBox();
-            this.specialExpInput = new System.Windows.Forms.TextBox();
-            this.defenseExpInput = new System.Windows.Forms.TextBox();
-            this.attackExpInput = new System.Windows.Forms.TextBox();
-            this.hpExpInput = new System.Windows.Forms.TextBox();
             this.statExpLabel = new System.Windows.Forms.Label();
             this.specialIvLabel = new System.Windows.Forms.Label();
             this.speedIvLabel = new System.Windows.Forms.Label();
@@ -76,6 +71,13 @@
             this.typesLabel = new System.Windows.Forms.Label();
             this.type1Label = new System.Windows.Forms.Label();
             this.type2Label = new System.Windows.Forms.Label();
+            this.hpExpLabel = new System.Windows.Forms.Label();
+            this.attackExpLabel = new System.Windows.Forms.Label();
+            this.defenseExpLabel = new System.Windows.Forms.Label();
+            this.specialExpLabel = new System.Windows.Forms.Label();
+            this.speedExpLabel = new System.Windows.Forms.Label();
+            this.addExpFromVitaminButton = new System.Windows.Forms.Button();
+            this.vitaminDropDown = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.spriteBox)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -167,9 +169,9 @@
             // 
             // addExpButton
             // 
-            this.addExpButton.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.addExpButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tableLayoutPanel1.SetColumnSpan(this.addExpButton, 2);
-            this.addExpButton.Location = new System.Drawing.Point(47, 479);
+            this.addExpButton.Location = new System.Drawing.Point(25, 479);
             this.addExpButton.Name = "addExpButton";
             this.addExpButton.Size = new System.Drawing.Size(186, 34);
             this.addExpButton.TabIndex = 1;
@@ -179,13 +181,13 @@
             // 
             // koedPokemonDropDown
             // 
-            this.koedPokemonDropDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.koedPokemonDropDown.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tableLayoutPanel1.SetColumnSpan(this.koedPokemonDropDown, 2);
             this.koedPokemonDropDown.DropDownHeight = 180;
             this.koedPokemonDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.koedPokemonDropDown.FormattingEnabled = true;
             this.koedPokemonDropDown.IntegralHeight = false;
-            this.koedPokemonDropDown.Location = new System.Drawing.Point(239, 483);
+            this.koedPokemonDropDown.Location = new System.Drawing.Point(53, 523);
             this.koedPokemonDropDown.Name = "koedPokemonDropDown";
             this.koedPokemonDropDown.Size = new System.Drawing.Size(130, 24);
             this.koedPokemonDropDown.TabIndex = 36;
@@ -251,51 +253,6 @@
             this.baseHpLabel.Size = new System.Drawing.Size(12, 17);
             this.baseHpLabel.TabIndex = 32;
             this.baseHpLabel.Text = " ";
-            // 
-            // speedExpInput
-            // 
-            this.speedExpInput.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.speedExpInput.Location = new System.Drawing.Point(599, 321);
-            this.speedExpInput.Name = "speedExpInput";
-            this.speedExpInput.Size = new System.Drawing.Size(100, 22);
-            this.speedExpInput.TabIndex = 25;
-            this.speedExpInput.Text = "0";
-            // 
-            // specialExpInput
-            // 
-            this.specialExpInput.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.specialExpInput.Location = new System.Drawing.Point(481, 321);
-            this.specialExpInput.Name = "specialExpInput";
-            this.specialExpInput.Size = new System.Drawing.Size(100, 22);
-            this.specialExpInput.TabIndex = 29;
-            this.specialExpInput.Text = "0";
-            // 
-            // defenseExpInput
-            // 
-            this.defenseExpInput.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.defenseExpInput.Location = new System.Drawing.Point(363, 321);
-            this.defenseExpInput.Name = "defenseExpInput";
-            this.defenseExpInput.Size = new System.Drawing.Size(100, 22);
-            this.defenseExpInput.TabIndex = 27;
-            this.defenseExpInput.Text = "0";
-            // 
-            // attackExpInput
-            // 
-            this.attackExpInput.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.attackExpInput.Location = new System.Drawing.Point(245, 321);
-            this.attackExpInput.Name = "attackExpInput";
-            this.attackExpInput.Size = new System.Drawing.Size(100, 22);
-            this.attackExpInput.TabIndex = 28;
-            this.attackExpInput.Text = "0";
-            // 
-            // hpExpInput
-            // 
-            this.hpExpInput.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.hpExpInput.Location = new System.Drawing.Point(127, 321);
-            this.hpExpInput.Name = "hpExpInput";
-            this.hpExpInput.Size = new System.Drawing.Size(100, 22);
-            this.hpExpInput.TabIndex = 26;
-            this.hpExpInput.Text = "0";
             // 
             // statExpLabel
             // 
@@ -531,18 +488,12 @@
             this.tableLayoutPanel1.Controls.Add(this.speedIvLabel, 5, 8);
             this.tableLayoutPanel1.Controls.Add(this.specialIvLabel, 4, 8);
             this.tableLayoutPanel1.Controls.Add(this.statExpLabel, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.hpExpInput, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.attackExpInput, 2, 7);
-            this.tableLayoutPanel1.Controls.Add(this.defenseExpInput, 3, 7);
-            this.tableLayoutPanel1.Controls.Add(this.specialExpInput, 4, 7);
-            this.tableLayoutPanel1.Controls.Add(this.speedExpInput, 5, 7);
             this.tableLayoutPanel1.Controls.Add(this.baseHpLabel, 1, 9);
             this.tableLayoutPanel1.Controls.Add(this.baseAttackLabel, 2, 9);
             this.tableLayoutPanel1.Controls.Add(this.baseDefenseLabel, 3, 9);
             this.tableLayoutPanel1.Controls.Add(this.baseSpecialLabel, 4, 9);
             this.tableLayoutPanel1.Controls.Add(this.baseSpeedLabel, 5, 9);
             this.tableLayoutPanel1.Controls.Add(this.calcDVsButton, 0, 13);
-            this.tableLayoutPanel1.Controls.Add(this.koedPokemonDropDown, 2, 11);
             this.tableLayoutPanel1.Controls.Add(this.addExpButton, 0, 11);
             this.tableLayoutPanel1.Controls.Add(this.savedPokemonLabel, 7, 4);
             this.tableLayoutPanel1.Controls.Add(this.yourPokemonDropDown, 8, 4);
@@ -558,6 +509,14 @@
             this.tableLayoutPanel1.Controls.Add(this.nicknameInput, 6, 0);
             this.tableLayoutPanel1.Controls.Add(this.levelLabel, 2, 3);
             this.tableLayoutPanel1.Controls.Add(this.levelInput, 3, 3);
+            this.tableLayoutPanel1.Controls.Add(this.hpExpLabel, 1, 7);
+            this.tableLayoutPanel1.Controls.Add(this.attackExpLabel, 2, 7);
+            this.tableLayoutPanel1.Controls.Add(this.defenseExpLabel, 3, 7);
+            this.tableLayoutPanel1.Controls.Add(this.specialExpLabel, 4, 7);
+            this.tableLayoutPanel1.Controls.Add(this.speedExpLabel, 5, 7);
+            this.tableLayoutPanel1.Controls.Add(this.koedPokemonDropDown, 0, 12);
+            this.tableLayoutPanel1.Controls.Add(this.addExpFromVitaminButton, 2, 11);
+            this.tableLayoutPanel1.Controls.Add(this.vitaminDropDown, 2, 12);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -629,6 +588,80 @@
             this.type2Label.TabIndex = 46;
             this.type2Label.Text = " ";
             // 
+            // hpExpLabel
+            // 
+            this.hpExpLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.hpExpLabel.AutoSize = true;
+            this.hpExpLabel.Location = new System.Drawing.Point(169, 324);
+            this.hpExpLabel.Name = "hpExpLabel";
+            this.hpExpLabel.Size = new System.Drawing.Size(16, 17);
+            this.hpExpLabel.TabIndex = 47;
+            this.hpExpLabel.Text = "0";
+            // 
+            // attackExpLabel
+            // 
+            this.attackExpLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.attackExpLabel.AutoSize = true;
+            this.attackExpLabel.Location = new System.Drawing.Point(287, 324);
+            this.attackExpLabel.Name = "attackExpLabel";
+            this.attackExpLabel.Size = new System.Drawing.Size(16, 17);
+            this.attackExpLabel.TabIndex = 48;
+            this.attackExpLabel.Text = "0";
+            // 
+            // defenseExpLabel
+            // 
+            this.defenseExpLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.defenseExpLabel.AutoSize = true;
+            this.defenseExpLabel.Location = new System.Drawing.Point(405, 324);
+            this.defenseExpLabel.Name = "defenseExpLabel";
+            this.defenseExpLabel.Size = new System.Drawing.Size(16, 17);
+            this.defenseExpLabel.TabIndex = 49;
+            this.defenseExpLabel.Text = "0";
+            // 
+            // specialExpLabel
+            // 
+            this.specialExpLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.specialExpLabel.AutoSize = true;
+            this.specialExpLabel.Location = new System.Drawing.Point(523, 324);
+            this.specialExpLabel.Name = "specialExpLabel";
+            this.specialExpLabel.Size = new System.Drawing.Size(16, 17);
+            this.specialExpLabel.TabIndex = 50;
+            this.specialExpLabel.Text = "0";
+            // 
+            // speedExpLabel
+            // 
+            this.speedExpLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.speedExpLabel.AutoSize = true;
+            this.speedExpLabel.Location = new System.Drawing.Point(641, 324);
+            this.speedExpLabel.Name = "speedExpLabel";
+            this.speedExpLabel.Size = new System.Drawing.Size(16, 17);
+            this.speedExpLabel.TabIndex = 51;
+            this.speedExpLabel.Text = "0";
+            // 
+            // addExpFromVitaminButton
+            // 
+            this.addExpFromVitaminButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tableLayoutPanel1.SetColumnSpan(this.addExpFromVitaminButton, 2);
+            this.addExpFromVitaminButton.Location = new System.Drawing.Point(261, 479);
+            this.addExpFromVitaminButton.Name = "addExpFromVitaminButton";
+            this.addExpFromVitaminButton.Size = new System.Drawing.Size(186, 34);
+            this.addExpFromVitaminButton.TabIndex = 52;
+            this.addExpFromVitaminButton.Text = "Add exp from vitamin:";
+            this.addExpFromVitaminButton.UseVisualStyleBackColor = true;
+            // 
+            // vitaminDropDown
+            // 
+            this.vitaminDropDown.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tableLayoutPanel1.SetColumnSpan(this.vitaminDropDown, 2);
+            this.vitaminDropDown.DropDownHeight = 180;
+            this.vitaminDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.vitaminDropDown.FormattingEnabled = true;
+            this.vitaminDropDown.IntegralHeight = false;
+            this.vitaminDropDown.Location = new System.Drawing.Point(289, 524);
+            this.vitaminDropDown.Name = "vitaminDropDown";
+            this.vitaminDropDown.Size = new System.Drawing.Size(130, 24);
+            this.vitaminDropDown.TabIndex = 53;
+            // 
             // StatTrackerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -669,11 +702,6 @@
         private System.Windows.Forms.Label speedIvLabel;
         private System.Windows.Forms.Label specialIvLabel;
         private System.Windows.Forms.Label statExpLabel;
-        private System.Windows.Forms.TextBox hpExpInput;
-        private System.Windows.Forms.TextBox attackExpInput;
-        private System.Windows.Forms.TextBox defenseExpInput;
-        private System.Windows.Forms.TextBox specialExpInput;
-        private System.Windows.Forms.TextBox speedExpInput;
         private System.Windows.Forms.Label baseHpLabel;
         private System.Windows.Forms.Label baseAttackLabel;
         private System.Windows.Forms.Label baseDefenseLabel;
@@ -694,6 +722,13 @@
         private System.Windows.Forms.Label typesLabel;
         private System.Windows.Forms.Label type1Label;
         private System.Windows.Forms.Label type2Label;
+        private System.Windows.Forms.Label hpExpLabel;
+        private System.Windows.Forms.Label attackExpLabel;
+        private System.Windows.Forms.Label defenseExpLabel;
+        private System.Windows.Forms.Label specialExpLabel;
+        private System.Windows.Forms.Label speedExpLabel;
+        private System.Windows.Forms.Button addExpFromVitaminButton;
+        private System.Windows.Forms.ComboBox vitaminDropDown;
     }
 }
 
