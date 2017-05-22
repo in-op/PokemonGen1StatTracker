@@ -27,11 +27,34 @@ namespace PokemonGen1StatTracker
 
         private void calcStatsButton_Click(object sender, EventArgs e)
         {
-            hpIvLabel.Text = "100";
-            attackIvLabel.Text = "100";
-            defenseIvLabel.Text = "100";
-            specialIvLabel.Text = "100";
-            speedIvLabel.Text = "100";
+            int pokemonNumber = int.MinValue;
+            for (int i = 0; i < 151; i++)
+                if (pokemonDropDown.Text == PokemonData.Species[i])
+                    pokemonNumber = i + 1;
+            
+            float.TryParse(hpTextBox.Text, out float hp);
+            float.TryParse(levelInput.Text, out float lvl);
+            float.TryParse(attackTextBox.Text, out float atk);
+            float.TryParse(defenseTextBox.Text, out float def);
+            float.TryParse(specialTextBox.Text, out float spc);
+            float.TryParse(speedTextBox.Text, out float spd);
+            
+            // BUG (for now) ALL STAT EXP SET TO 0
+            // FIX FIX FIX FIX for later
+            hpIvLabel.Text = DVCalculator.MinHPDV(hp, lvl, 0f, PokemonData.AllBaseStats[pokemonNumber].HP) + 
+                             "-" + DVCalculator.MaxHPDV(hp, lvl, 0f, PokemonData.AllBaseStats[pokemonNumber].HP);
+
+            attackIvLabel.Text = DVCalculator.MinNonHPDV(atk, lvl, 0f, PokemonData.AllBaseStats[pokemonNumber].Attack) +
+                                 "-" + DVCalculator.MaxNonHPDV(atk, lvl, 0f, PokemonData.AllBaseStats[pokemonNumber].Attack);
+
+            defenseIvLabel.Text = DVCalculator.MinNonHPDV(def, lvl, 0f, PokemonData.AllBaseStats[pokemonNumber].Defense) +
+                                  "-" + DVCalculator.MaxNonHPDV(def, lvl, 0f, PokemonData.AllBaseStats[pokemonNumber].Defense);
+
+            specialIvLabel.Text = DVCalculator.MinNonHPDV(spc, lvl, 0f, PokemonData.AllBaseStats[pokemonNumber].Special) +
+                                  "-" + DVCalculator.MaxNonHPDV(spc, lvl, 0f, PokemonData.AllBaseStats[pokemonNumber].Special);
+
+            speedIvLabel.Text = DVCalculator.MinNonHPDV(spd, lvl, 0f, PokemonData.AllBaseStats[pokemonNumber].Speed) +
+                                "-" + DVCalculator.MaxNonHPDV(spd, lvl, 0f, PokemonData.AllBaseStats[pokemonNumber].Speed);
         }
 
         
