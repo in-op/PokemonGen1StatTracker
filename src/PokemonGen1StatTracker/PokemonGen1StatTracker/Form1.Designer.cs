@@ -38,7 +38,7 @@
             this.savedPokemonLabel = new System.Windows.Forms.Label();
             this.addExpButton = new System.Windows.Forms.Button();
             this.koedPokemonDropDown = new System.Windows.Forms.ComboBox();
-            this.calcStatsButton = new System.Windows.Forms.Button();
+            this.calcDVsButton = new System.Windows.Forms.Button();
             this.baseSpeedLabel = new System.Windows.Forms.Label();
             this.baseSpecialLabel = new System.Windows.Forms.Label();
             this.baseDefenseLabel = new System.Windows.Forms.Label();
@@ -190,17 +190,17 @@
             this.koedPokemonDropDown.Size = new System.Drawing.Size(130, 24);
             this.koedPokemonDropDown.TabIndex = 36;
             // 
-            // calcStatsButton
+            // calcDVsButton
             // 
-            this.calcStatsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tableLayoutPanel1.SetColumnSpan(this.calcStatsButton, 2);
-            this.calcStatsButton.Location = new System.Drawing.Point(51, 637);
-            this.calcStatsButton.Name = "calcStatsButton";
-            this.calcStatsButton.Size = new System.Drawing.Size(133, 35);
-            this.calcStatsButton.TabIndex = 17;
-            this.calcStatsButton.Text = "Calculate DVs";
-            this.calcStatsButton.UseVisualStyleBackColor = true;
-            this.calcStatsButton.Click += new System.EventHandler(this.calcStatsButton_Click);
+            this.calcDVsButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tableLayoutPanel1.SetColumnSpan(this.calcDVsButton, 2);
+            this.calcDVsButton.Location = new System.Drawing.Point(51, 637);
+            this.calcDVsButton.Name = "calcDVsButton";
+            this.calcDVsButton.Size = new System.Drawing.Size(133, 35);
+            this.calcDVsButton.TabIndex = 17;
+            this.calcDVsButton.Text = "Calculate DVs";
+            this.calcDVsButton.UseVisualStyleBackColor = true;
+            this.calcDVsButton.Click += new System.EventHandler(this.calcStatsButton_Click);
             // 
             // baseSpeedLabel
             // 
@@ -479,8 +479,8 @@
             // 
             // levelInput
             // 
-            this.levelInput.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.levelInput.Location = new System.Drawing.Point(357, 131);
+            this.levelInput.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.levelInput.Location = new System.Drawing.Point(394, 131);
             this.levelInput.Name = "levelInput";
             this.levelInput.Size = new System.Drawing.Size(38, 22);
             this.levelInput.TabIndex = 4;
@@ -541,7 +541,7 @@
             this.tableLayoutPanel1.Controls.Add(this.baseDefenseLabel, 3, 9);
             this.tableLayoutPanel1.Controls.Add(this.baseSpecialLabel, 4, 9);
             this.tableLayoutPanel1.Controls.Add(this.baseSpeedLabel, 5, 9);
-            this.tableLayoutPanel1.Controls.Add(this.calcStatsButton, 0, 13);
+            this.tableLayoutPanel1.Controls.Add(this.calcDVsButton, 0, 13);
             this.tableLayoutPanel1.Controls.Add(this.koedPokemonDropDown, 2, 11);
             this.tableLayoutPanel1.Controls.Add(this.addExpButton, 0, 11);
             this.tableLayoutPanel1.Controls.Add(this.savedPokemonLabel, 7, 4);
@@ -679,7 +679,7 @@
         private System.Windows.Forms.Label baseDefenseLabel;
         private System.Windows.Forms.Label baseSpecialLabel;
         private System.Windows.Forms.Label baseSpeedLabel;
-        private System.Windows.Forms.Button calcStatsButton;
+        private System.Windows.Forms.Button calcDVsButton;
         private System.Windows.Forms.ComboBox koedPokemonDropDown;
         private System.Windows.Forms.Button addExpButton;
         private System.Windows.Forms.Label savedPokemonLabel;
