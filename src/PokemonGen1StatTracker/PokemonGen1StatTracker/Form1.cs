@@ -189,29 +189,6 @@ namespace PokemonGen1StatTracker
         }
 
 
-        private Pokemon GetCurrentlySelectedSavedPokemon()
-        {
-            string name = yourPokemonDropDown.Text;
-            string[] names = GetYourPokemonNames();
-            int index = 0;
-            for (int i = 0; i < names.Length; i++)
-            {
-                if (names[i] == name)
-                {
-                    index = i;
-                    break;
-                }
-            }
-            return yourPokemon[index];
-        }
-
-
-
-
-
-        
-
-        
 
 
         private void savedPokemonDropDown_SelectedIndexChanged(object sender, EventArgs e)
@@ -376,6 +353,24 @@ namespace PokemonGen1StatTracker
                 if (koedPokemonDropDown.Text == PokemonData.Species[i])
                     return i + 1;
             return 0;
+        }
+
+
+
+        private Pokemon GetCurrentlySelectedSavedPokemon()
+        {
+            string name = yourPokemonDropDown.Text;
+            string[] names = GetYourPokemonNames();
+            int index = 0;
+            for (int i = 0; i < names.Length; i++)
+            {
+                if (names[i] == name)
+                {
+                    index = i;
+                    break;
+                }
+            }
+            return yourPokemon[index];
         }
 
 
