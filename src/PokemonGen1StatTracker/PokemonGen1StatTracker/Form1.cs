@@ -90,7 +90,9 @@ namespace PokemonGen1StatTracker
         private void AddOrUpdatePokemonToList()
         {
             string[] names = GetYourPokemonNames();
-            string name = yourPokemonDropDown.Text;
+            string name = pokemonDropDown.Text;
+            if (nicknameInput.Text != "")
+                name += " - " + nicknameInput.Text;
 
             if (names.Contains(name)) //update
             {
