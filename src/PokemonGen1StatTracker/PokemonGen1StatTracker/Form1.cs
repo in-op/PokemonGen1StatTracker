@@ -296,6 +296,17 @@ namespace PokemonGen1StatTracker
             int minSpeed = StatCalculator.MinNonHPDV(spd, lvl, spdExp, PokemonData.AllBaseStats[pokemonNumber].Speed);
             int maxSpeed = StatCalculator.MaxNonHPDV(spd, lvl, spdExp, PokemonData.AllBaseStats[pokemonNumber].Speed);
 
+            if (minHP < 0) minHP = 0;
+            if (maxHP > 15) maxHP = 15;
+            if (minAttack < 0) minAttack = 0;
+            if (maxAttack > 15) maxAttack = 15;
+            if (minDefense < 0) minDefense = 0;
+            if (maxDefense > 15) maxDefense = 15;
+            if (minSpecial < 0) minSpecial = 0;
+            if (maxSpecial > 15) maxSpecial = 15;
+            if (minSpeed < 0) minSpeed = 0;
+            if (maxSpeed > 15) maxSpeed = 15;
+
             hpIvLabel.Text = (minHP == maxHP) ? minHP.ToString() : minHP + "-" + maxHP;
             attackIvLabel.Text = (minAttack == maxAttack) ? minAttack.ToString() : minAttack + "-" + maxAttack;
             defenseIvLabel.Text = (minDefense == maxDefense) ? minDefense.ToString() : minDefense + "-" + maxDefense;
