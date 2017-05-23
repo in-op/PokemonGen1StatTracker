@@ -7,7 +7,7 @@ namespace PokemonGen1StatTracker
 {
     internal static class SaveManager
     {
-        internal static List<SaveData.Pokemon> Load()
+        internal static List<Pokemon> Load()
         {
             if (File.Exists(@".\\save\\save.bin"))
             {
@@ -17,11 +17,11 @@ namespace PokemonGen1StatTracker
                 stream.Close();
                 return save.savedPokemon;
             }
-            else return new List<SaveData.Pokemon>(151);
+            else return new List<Pokemon>(151);
         }
 
 
-        internal static void Save(List<SaveData.Pokemon> yourPokemon)
+        internal static void Save(List<Pokemon> yourPokemon)
         {
             SaveData save = new SaveData();
             save.savedPokemon = yourPokemon;

@@ -8,7 +8,7 @@ namespace PokemonGen1StatTracker
 {
     public partial class StatTrackerForm : Form
     {
-        private List<SaveData.Pokemon> yourPokemon;
+        private List<Pokemon> yourPokemon;
 
         public StatTrackerForm()
         {
@@ -33,7 +33,7 @@ namespace PokemonGen1StatTracker
             {
                 if (name == GetSaveName(yourPokemon[i]))
                 {
-                    SaveData.Pokemon pokemon = yourPokemon[i];
+                    Pokemon pokemon = yourPokemon[i];
                     yourPokemon.Remove(pokemon);
                 }
             }
@@ -190,7 +190,7 @@ namespace PokemonGen1StatTracker
         }
 
 
-        private SaveData.Pokemon GetCurrentlySelectedSavedPokemon()
+        private Pokemon GetCurrentlySelectedSavedPokemon()
         {
             string name = yourPokemonDropDown.Text;
             string[] names = GetYourPokemonNames();
@@ -220,7 +220,7 @@ namespace PokemonGen1StatTracker
             DisplaySavedPokemonInfo(GetCurrentlySelectedSavedPokemon());
         }
 
-        private void DisplaySavedPokemonInfo(SaveData.Pokemon pokemon)
+        private void DisplaySavedPokemonInfo(Pokemon pokemon)
         {
             pokemonDropDown.Text = pokemon.species;
             nicknameInput.Text = pokemon.nickname;
@@ -256,7 +256,7 @@ namespace PokemonGen1StatTracker
 
             if (names.Contains(name)) //update
             {
-                SaveData.Pokemon pokemon =
+                Pokemon pokemon =
                     yourPokemon[Array.IndexOf(names, name)];
 
                 pokemon.level = levelInput.Text;
@@ -276,7 +276,7 @@ namespace PokemonGen1StatTracker
             }
             else //add
             {
-                yourPokemon.Add(new SaveData.Pokemon()
+                yourPokemon.Add(new Pokemon()
                 {
                     nickname = nicknameInput.Text,
                     species = pokemonDropDown.Text,
@@ -401,7 +401,7 @@ namespace PokemonGen1StatTracker
         }
 
 
-        private string GetSaveName(SaveData.Pokemon pokemon)
+        private string GetSaveName(Pokemon pokemon)
         {
             string output = pokemon.species;
             if (pokemon.nickname != "")
