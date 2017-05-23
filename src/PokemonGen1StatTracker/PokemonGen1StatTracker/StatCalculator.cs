@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PokemonGen1StatTracker
 {
@@ -15,6 +11,7 @@ namespace PokemonGen1StatTracker
                 (Math.Ceiling(Math.Sqrt(exp)))
                 / 4f);
         }
+
 
 
 

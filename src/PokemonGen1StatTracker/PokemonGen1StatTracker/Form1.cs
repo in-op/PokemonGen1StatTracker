@@ -1,15 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace PokemonGen1StatTracker
 {
@@ -21,7 +14,7 @@ namespace PokemonGen1StatTracker
         {
             InitializeComponent();
             Directory.SetCurrentDirectory(@"..\..");
-            yourPokemon = SaveFileManager.LoadSavedPokemonList();
+            yourPokemon = SaveManager.Load();
             InitializeDropDowns();
         }
         private void InitializeDropDowns()
@@ -44,13 +37,13 @@ namespace PokemonGen1StatTracker
                     yourPokemon.Remove(pokemon);
                 }
             }
-            SaveFileManager.SavePokemonListToFile(yourPokemon);
+            SaveManager.Save(yourPokemon);
             RefreshSavedPokemonDropdown();
         }
         private void savePokemonButton_Click(object sender, EventArgs e)
         {
             AddOrUpdatePokemonToList();
-            SaveFileManager.SavePokemonListToFile(yourPokemon);
+            SaveManager.Save(yourPokemon);
             RefreshSavedPokemonDropdown();
         }
         private void addExpFromVitaminButton_Click(object sender, EventArgs e)
@@ -216,13 +209,6 @@ namespace PokemonGen1StatTracker
 
 
 
-        private string GetSaveName(SaveData.Pokemon pokemon)
-        {
-            string output = pokemon.species;
-            if (pokemon.nickname != "")
-                output += " - " + pokemon.nickname;
-            return output;
-        }
 
         
 
@@ -231,8 +217,7 @@ namespace PokemonGen1StatTracker
 
         private void savedPokemonDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DisplaySavedPokemonInfo(
-                GetCurrentlySelectedSavedPokemon());
+            DisplaySavedPokemonInfo(GetCurrentlySelectedSavedPokemon());
         }
 
         private void DisplaySavedPokemonInfo(SaveData.Pokemon pokemon)
@@ -375,14 +360,7 @@ namespace PokemonGen1StatTracker
 
         private void LoadSprite()
         {
-            try
-            {
-                spriteBox.Load(".\\img\\" + pokemonDropDown.Text + ".png");
-            }
-            catch
-            {
-                spriteBox.Load(".\\img\\Missingno.png");
-            }
+            spriteBox.Load(".\\img\\" + pokemonDropDown.Text + ".png");
         }
 
         private int GetPokemonNumber()
@@ -422,10 +400,17 @@ namespace PokemonGen1StatTracker
             return output;
         }
 
-        
 
-        
+        private string GetSaveName(SaveData.Pokemon pokemon)
+        {
+            string output = pokemon.species;
+            if (pokemon.nickname != "")
+                output += " - " + pokemon.nickname;
+            return output;
+        }
 
-        
+
+
+
     }
 }

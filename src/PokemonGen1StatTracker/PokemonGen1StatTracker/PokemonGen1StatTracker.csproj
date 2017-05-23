@@ -46,7 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SaveData.cs" />
-    <Compile Include="SaveFileManager.cs" />
+    <Compile Include="SaveManager.cs" />
     <Compile Include="StatCalculator.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

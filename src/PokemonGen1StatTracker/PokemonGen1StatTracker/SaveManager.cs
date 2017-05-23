@@ -5,9 +5,9 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace PokemonGen1StatTracker
 {
-    internal static class SaveFileManager
+    internal static class SaveManager
     {
-        internal static List<SaveData.Pokemon> LoadSavedPokemonList()
+        internal static List<SaveData.Pokemon> Load()
         {
             if (File.Exists(@".\\save\\save.bin"))
             {
@@ -21,7 +21,7 @@ namespace PokemonGen1StatTracker
         }
 
 
-        internal static void SavePokemonListToFile(List<SaveData.Pokemon> yourPokemon)
+        internal static void Save(List<SaveData.Pokemon> yourPokemon)
         {
             SaveData save = new SaveData();
             save.savedPokemon = yourPokemon;
