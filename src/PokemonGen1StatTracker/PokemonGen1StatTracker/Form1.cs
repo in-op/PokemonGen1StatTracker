@@ -43,6 +43,30 @@ namespace PokemonGen1StatTracker
             RefreshSavedPokemonDropdown();
         }
 
+        private string GetSaveName(SaveData.Pokemon pokemon)
+        {
+            string output = pokemon.species;
+            if (pokemon.nickname != "")
+                output += " - " + pokemon.nickname;
+            return output;
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            string name = GetSaveNameOfCurrentPokemon();
+            string[] names = GetYourPokemonNames();
+            for (int i = 0; i < yourPokemon.Count; i++)
+            {
+                if (name == GetSaveName(yourPokemon[i]))
+                {
+                    SaveData.Pokemon pokemon = yourPokemon[i];
+                    yourPokemon.Remove(pokemon);
+                }
+            }
+            SavePokemonListToFile();
+            RefreshSavedPokemonDropdown();
+        }
+
         private SaveData.Pokemon GetCurrentlySelectedSavedPokemon()
         {
             string name = yourPokemonDropDown.Text;
@@ -375,6 +399,7 @@ namespace PokemonGen1StatTracker
         private string[] GetYourPokemonNames()
         {
             string[] output = new string[yourPokemon.Count];
+
             int length = output.Length;
             for (int i = 0; i < length; i++)
             {
