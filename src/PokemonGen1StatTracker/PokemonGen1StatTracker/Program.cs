@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 
 namespace PokemonGen1StatTracker
@@ -11,6 +12,7 @@ namespace PokemonGen1StatTracker
         [STAThread]
         static void Main()
         {
+            Directory.SetCurrentDirectory(@"..\..");
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new StatTrackerForm());

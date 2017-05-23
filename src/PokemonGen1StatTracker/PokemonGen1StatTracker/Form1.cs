@@ -13,7 +13,6 @@ namespace PokemonGen1StatTracker
         public StatTrackerForm()
         {
             InitializeComponent();
-            Directory.SetCurrentDirectory(@"..\..");
             yourPokemon = SaveManager.Load();
             InitializeDropDowns();
         }
