@@ -1,375 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace PokemonGen1StatTracker
 {
     internal static class PokemonData
     {
-
-        internal static string[] Vitamins = new string[]
+        internal sealed class BaseStats
         {
-            "HP Up",
-            "Protein",
-            "Iron",
-            "Calcium",
-            "Carbos"
-        };
+            public readonly float HP;
+            public readonly float Attack;
+            public readonly float Defense;
+            public readonly float Special;
+            public readonly float Speed;
 
-
-
-        internal enum Types
-        {
-            NONE,
-            NORMAL,
-            FIRE,
-            WATER,
-            ELECTRIC,
-            GRASS,
-            ICE,
-            FIGHTING,
-            POISON,
-            GROUND,
-            FLYING,
-            PSYCHIC,
-            BUG,
-            ROCK,
-            GHOST,
-            DRAGON
-        }
-
-        internal static string TypeToString(Types type)
-        {
-            switch(type)
+            public BaseStats(float hp, float attack, float defense, float special, float speed)
             {
-                case Types.NORMAL: return "Normal";
-                case Types.FIRE: return "Fire";
-                case Types.WATER: return "Water";
-                case Types.ELECTRIC: return "Electric";
-                case Types.GRASS: return "Grass";
-                case Types.ICE: return "Ice";
-                case Types.FIGHTING: return "Fighting";
-                case Types.POISON: return "Poison";
-                case Types.GROUND: return "Ground";
-                case Types.FLYING: return "Flying";
-                case Types.PSYCHIC: return "Psychic";
-                case Types.BUG: return "Bug";
-                case Types.ROCK: return "Rock";
-                case Types.GHOST: return "Ghost";
-                case Types.DRAGON: return "Dragon";
-                default: return "";
+                HP = hp;
+                Attack = attack;
+                Defense = defense;
+                Special = special;
+                Speed = speed;
             }
+
         }
 
-        internal static readonly Types[][] AllTypes = new Types[][]
-        {
-            //0 - No Pokemon
-            new Types[] { Types.NONE, Types.NONE },
-            //1 - Bulbasaur                      
-            new Types[] { Types.GRASS, Types.POISON },
-            //2 - Ivysaur
-            new Types[] { Types.GRASS, Types.POISON },
-            //3 - Venusaur
-            new Types[] { Types.GRASS, Types.POISON },
-            //4 - Charmander
-            new Types[] { Types.FIRE, Types.NONE },
-            //5 - Charmeleon
-            new Types[] { Types.FIRE, Types.NONE },
-            //6 - Charizard
-            new Types[] { Types.FIRE, Types.FLYING },
-            //7 - Squirtle
-            new Types[] { Types.WATER, Types.NONE },
-            //8 - Wartortle
-            new Types[] { Types.WATER, Types.NONE },
-            //9 - Blastoise
-            new Types[] { Types.WATER, Types.NONE },
-            //10 - Caterpie
-            new Types[] { Types.BUG, Types.NONE },
-            //11 - Metapod
-            new Types[] { Types.BUG, Types.NONE },
-            //12 - Butterfree
-            new Types[] { Types.BUG, Types.FLYING },
-            //13 - Weedle
-            new Types[] { Types.BUG, Types.POISON },
-            //14 - Kakuna
-            new Types[] { Types.BUG, Types.POISON },
-            //15 - Beedrill
-            new Types[] { Types.BUG, Types.POISON },
-            //16 - Pidgey
-            new Types[] { Types.NORMAL, Types.FLYING },
-            //17 - Pidgeotto
-            new Types[] { Types.NORMAL, Types.FLYING },
-            //18 - Pidgeot
-            new Types[] { Types.NORMAL, Types.FLYING },
-            //19 - Rattata
-            new Types[] { Types.NORMAL, Types.NONE },
-            //20 - Raticate
-            new Types[] { Types.NORMAL, Types.NONE },
-            //21 - Spearow
-            new Types[] { Types.NORMAL, Types.FLYING },
-            //22 - Fearow
-            new Types[] { Types.NORMAL, Types.FLYING },
-            //23 - Ekans
-            new Types[] { Types.POISON, Types.NONE },
-            //24 - Arbok
-            new Types[] { Types.POISON, Types.NONE },
-            //25 - Pikachu
-            new Types[] { Types.ELECTRIC, Types.NONE },
-            //26 - Raichu
-            new Types[] { Types.ELECTRIC, Types.NONE },
-            //27 - Sandshrew
-            new Types[] { Types.GROUND, Types.NONE },
-            //28 - Sandslash
-            new Types[] { Types.GROUND, Types.NONE },
-            //29 - Nidoran Female
-            new Types[] { Types.POISON, Types.NONE },
-            //30 - Nidorina
-            new Types[] { Types.POISON, Types.NONE },
-            //31 - Nidoqueen
-            new Types[] { Types.POISON, Types.GROUND },
-            //32 - Nidoran Male
-            new Types[] { Types.POISON, Types.NONE },
-            //33 - Nidorino
-            new Types[] { Types.POISON, Types.NONE },
-            //34 - Nidoking
-            new Types[] { Types.POISON, Types.GROUND },
-            //35 - Clefairy
-            new Types[] { Types.NORMAL, Types.NONE },
-            //36 - Clefable
-            new Types[] { Types.NORMAL, Types.NONE },
-            //37 - Vulpix
-            new Types[] { Types.FIRE, Types.NONE },
-            //38 - Ninetails
-            new Types[] { Types.FIRE, Types.NONE },
-            //39 - Jigglypuff
-            new Types[] { Types.NORMAL, Types.NONE },
-            //40 - Wigglytuff
-            new Types[] { Types.NORMAL, Types.NONE },
-            //41 - Zubat
-            new Types[] { Types.POISON, Types.FLYING },
-            //42 - Golbat
-            new Types[] { Types.POISON, Types.FLYING },
-            //43 - Oddish
-            new Types[] { Types.GRASS, Types.POISON },
-            //44 - Gloom
-            new Types[] { Types.GRASS, Types.POISON },
-            //45 - Vileplume
-            new Types[] { Types.GRASS, Types.POISON },
-            //46 - Paras
-            new Types[] { Types.BUG, Types.GRASS },
-            //47 - Parasect
-            new Types[] { Types.BUG, Types.GRASS },
-            //48 - Venonat
-            new Types[] { Types.BUG, Types.POISON },
-            //49 - Venomoth
-            new Types[] { Types.BUG, Types.POISON },
-            //50 - Diglett
-            new Types[] { Types.GROUND, Types.NONE },
-            //51 - Dugtrio
-            new Types[] { Types.GROUND, Types.NONE },
-            //52 - Meowth
-            new Types[] { Types.NORMAL, Types.NONE },
-            //53 - Persian
-            new Types[] { Types.NORMAL, Types.NONE },
-            //54 - Psyduck
-            new Types[] { Types.WATER, Types.NONE },
-            //55 - Golduck
-            new Types[] { Types.WATER, Types.NONE },
-            //56 - Mankey
-            new Types[] { Types.FIGHTING, Types.NONE },
-            //57 - Primeape
-            new Types[] { Types.FIGHTING, Types.NONE },
-            //58 - Growlithe
-            new Types[] { Types.FIRE, Types.NONE },
-            //59 - Arcanine
-            new Types[] { Types.FIRE, Types.NONE },
-            //60 - Poliwag
-            new Types[] { Types.WATER, Types.NONE },
-            //61 - Poliwhirl
-            new Types[] { Types.WATER, Types.NONE },
-            //62 - Poliwrath
-            new Types[] { Types.WATER, Types.FIGHTING },
-            //63 - Abra
-            new Types[] { Types.PSYCHIC, Types.NONE },
-            //64 - Kadabra
-            new Types[] { Types.PSYCHIC, Types.NONE },
-            //65 - Alakazam
-            new Types[] { Types.PSYCHIC, Types.NONE },
-            //66 - Machop
-            new Types[] { Types.FIGHTING, Types.NONE },
-            //67 - Machoke
-            new Types[] { Types.FIGHTING, Types.NONE },
-            //68 - Machamp
-            new Types[] { Types.FIGHTING, Types.NONE },
-            //69 - Bellsprout
-            new Types[] { Types.GRASS, Types.POISON },
-            //70 - Weepinbell
-            new Types[] { Types.GRASS, Types.POISON },
-            //71 - Victreebel
-            new Types[] { Types.GRASS, Types.POISON },
-            //72 - Tentacool
-            new Types[] { Types.WATER, Types.POISON },
-            //73 - Tentacruel
-            new Types[] { Types.WATER, Types.POISON },
-            //74 - Geodude
-            new Types[] { Types.ROCK, Types.GROUND },
-            //75 - Graveler
-            new Types[] { Types.ROCK, Types.GROUND },
-            //76 - Golem
-            new Types[] { Types.ROCK, Types.GROUND },
-            //77 - Ponyta
-            new Types[] { Types.FIRE, Types.NONE },
-            //78 - Rapidash
-            new Types[] { Types.FIRE, Types.NONE },
-            //79 - Slowpoke
-            new Types[] { Types.WATER, Types.PSYCHIC },
-            //80 - Slowbrow
-            new Types[] { Types.WATER, Types.PSYCHIC },
-            //81 - Magnemite
-            new Types[] { Types.ELECTRIC, Types.NONE },
-            //82 - Magneton
-            new Types[] { Types.ELECTRIC, Types.NONE },
-            //83 - Farfetch'd
-            new Types[] { Types.NORMAL, Types.FLYING },
-            //84 - Doduo
-            new Types[] { Types.NORMAL, Types.FLYING },
-            //85 - Dodrio
-            new Types[] { Types.NORMAL, Types.FLYING },
-            //86 - Seel
-            new Types[] { Types.WATER, Types.NONE },
-            //87 - Dewgong
-            new Types[] { Types.WATER, Types.ICE },
-            //88 - Grimer
-            new Types[] { Types.POISON, Types.NONE },
-            //89 - Muk
-            new Types[] { Types.POISON, Types.NONE },
-            //90 - Shellder
-            new Types[] { Types.WATER, Types.NONE },
-            //91 - Cloyster
-            new Types[] { Types.WATER, Types.ICE },
-            //92 - Gastly
-            new Types[] { Types.GHOST, Types.POISON },
-            //93 - Haunter
-            new Types[] { Types.GHOST, Types.POISON },
-            //94 - Gengar
-            new Types[] { Types.GHOST, Types.POISON },
-            //95 - Onix
-            new Types[] { Types.ROCK, Types.GROUND },
-            //96 - Drowzee
-            new Types[] { Types.PSYCHIC, Types.NONE },
-            //97 - Hypno
-            new Types[] { Types.PSYCHIC, Types.NONE },
-            //98 - Krabby
-            new Types[] { Types.WATER, Types.NONE },
-            //99 - Kingler
-            new Types[] { Types.WATER, Types.NONE },
-            //100 - Voltorb
-            new Types[] { Types.ELECTRIC, Types.NONE },
-            //101 - Electrode
-            new Types[] { Types.ELECTRIC, Types.NONE },
-            //102 - Exeggcute
-            new Types[] { Types.GRASS, Types.PSYCHIC },
-            //103 - Exeggutor
-            new Types[] { Types.GRASS, Types.PSYCHIC },
-            //104 - Cubone
-            new Types[] { Types.GROUND, Types.NONE },
-            //105 - Marowak
-            new Types[] { Types.GROUND, Types.NONE },
-            //106 - Hitmonlee
-            new Types[] { Types.FIGHTING, Types.NONE },
-            //107 - Hitmonchan
-            new Types[] { Types.FIGHTING, Types.NONE },
-            //108 - Lickitung
-            new Types[] { Types.NORMAL, Types.NONE },
-            //109 - Koffing
-            new Types[] { Types.POISON, Types.NONE },
-            //110 - Weezing
-            new Types[] { Types.POISON, Types.NONE },
-            //111 - Rhyhorn
-            new Types[] { Types.GROUND, Types.ROCK },
-            //112 - Rhydon
-            new Types[] { Types.GROUND, Types.ROCK },
-            //113 - Chansey
-            new Types[] { Types.NORMAL, Types.NONE },
-            //114 - Tangela
-            new Types[] { Types.GRASS, Types.NONE },
-            //115 - Kangaskhan
-            new Types[] { Types.NORMAL, Types.NONE },
-            //116 - Horsea
-            new Types[] { Types.WATER, Types.NONE },
-            //117 - Seadra
-            new Types[] { Types.WATER, Types.NONE },
-            //118 - Goldeen
-            new Types[] { Types.WATER, Types.NONE },
-            //119 - Seaking
-            new Types[] { Types.WATER, Types.NONE },
-            //120 - Staryu
-            new Types[] { Types.WATER, Types.NONE },
-            //121 - Starmie
-            new Types[] { Types.WATER, Types.PSYCHIC },
-            //122 - Mr. Mime
-            new Types[] { Types.PSYCHIC, Types.NONE },
-            //123 - Scyther
-            new Types[] { Types.BUG, Types.FLYING },
-            //124 - Jynx
-            new Types[] { Types.ICE, Types.PSYCHIC },
-            //125 - Electabuzz
-            new Types[] { Types.ELECTRIC, Types.NONE },
-            //126 - Magmar
-            new Types[] { Types.FIRE, Types.NONE },
-            //127 - Pinsir
-            new Types[] { Types.BUG, Types.NONE },
-            //128 - Tauros
-            new Types[] { Types.NORMAL, Types.NONE },
-            //129 - Magikarp
-            new Types[] { Types.WATER, Types.NONE },
-            //130 - Gyarados
-            new Types[] { Types.WATER, Types.FLYING },
-            //131 - Lapras
-            new Types[] { Types.WATER, Types.ICE },
-            //132 - Ditto
-            new Types[] { Types.NORMAL, Types.NONE },
-            //133 - Eevee
-            new Types[] { Types.NORMAL, Types.NONE },
-            //134 - Vaporeon
-            new Types[] { Types.WATER, Types.NONE },
-            //135 - Jolteon
-            new Types[] { Types.ELECTRIC, Types.NONE },
-            //136 - Flareon
-            new Types[] { Types.FIRE, Types.NONE },
-            //137 - Porygon
-            new Types[] { Types.NORMAL, Types.NONE },
-            //138 - Omanyte
-            new Types[] { Types.ROCK, Types.WATER },
-            //139 - Omastar
-            new Types[] { Types.ROCK, Types.WATER },
-            //140 - Kabuto
-            new Types[] { Types.ROCK, Types.WATER },
-            //141 - Kabutops
-            new Types[] { Types.ROCK, Types.WATER },
-            //142 - Aerodactyl
-            new Types[] { Types.ROCK, Types.FLYING },
-            //143 - Snorlax
-            new Types[] { Types.NORMAL, Types.NONE },
-            //144 - Articuno
-            new Types[] { Types.ICE, Types.FLYING },
-            //145 - Zapdos
-            new Types[] { Types.ELECTRIC, Types.FLYING },
-            //146 - Moltres
-            new Types[] { Types.FIRE, Types.FLYING },
-            //147 - Dratini
-            new Types[] { Types.DRAGON, Types.NONE },
-            //148 - Dragonair
-            new Types[] { Types.DRAGON, Types.NONE },
-            //149 - Dragonite
-            new Types[] { Types.DRAGON, Types.FLYING },
-            //150 - Mewtwo
-            new Types[] { Types.PSYCHIC, Types.NONE },
-            //151 - Mew
-            new Types[] { Types.PSYCHIC, Types.NONE }
-        };
 
         internal static readonly string[] Species = new string[]
         {
@@ -836,25 +488,373 @@ namespace PokemonGen1StatTracker
         };
 
 
-
-        internal sealed class BaseStats
+        internal static string[] Vitamins = new string[]
         {
-            public readonly float HP;
-            public readonly float Attack;
-            public readonly float Defense;
-            public readonly float Special;
-            public readonly float Speed;
+            "HP Up",
+            "Protein",
+            "Iron",
+            "Calcium",
+            "Carbos"
+        };
 
-            public BaseStats(float hp, float attack, float defense, float special, float speed)
-            {
-                HP = hp;
-                Attack = attack;
-                Defense = defense;
-                Special = special;
-                Speed = speed;
-            }
 
+
+        internal enum Types
+        {
+            NONE,
+            NORMAL,
+            FIRE,
+            WATER,
+            ELECTRIC,
+            GRASS,
+            ICE,
+            FIGHTING,
+            POISON,
+            GROUND,
+            FLYING,
+            PSYCHIC,
+            BUG,
+            ROCK,
+            GHOST,
+            DRAGON
         }
+
+        internal static string TypeToString(Types type)
+        {
+            switch(type)
+            {
+                case Types.NORMAL: return "Normal";
+                case Types.FIRE: return "Fire";
+                case Types.WATER: return "Water";
+                case Types.ELECTRIC: return "Electric";
+                case Types.GRASS: return "Grass";
+                case Types.ICE: return "Ice";
+                case Types.FIGHTING: return "Fighting";
+                case Types.POISON: return "Poison";
+                case Types.GROUND: return "Ground";
+                case Types.FLYING: return "Flying";
+                case Types.PSYCHIC: return "Psychic";
+                case Types.BUG: return "Bug";
+                case Types.ROCK: return "Rock";
+                case Types.GHOST: return "Ghost";
+                case Types.DRAGON: return "Dragon";
+                default: return "";
+            }
+        }
+
+
+        internal static readonly Types[][] AllTypes = new Types[][]
+        {
+            //0 - No Pokemon
+            new Types[] { Types.NONE, Types.NONE },
+            //1 - Bulbasaur                      
+            new Types[] { Types.GRASS, Types.POISON },
+            //2 - Ivysaur
+            new Types[] { Types.GRASS, Types.POISON },
+            //3 - Venusaur
+            new Types[] { Types.GRASS, Types.POISON },
+            //4 - Charmander
+            new Types[] { Types.FIRE, Types.NONE },
+            //5 - Charmeleon
+            new Types[] { Types.FIRE, Types.NONE },
+            //6 - Charizard
+            new Types[] { Types.FIRE, Types.FLYING },
+            //7 - Squirtle
+            new Types[] { Types.WATER, Types.NONE },
+            //8 - Wartortle
+            new Types[] { Types.WATER, Types.NONE },
+            //9 - Blastoise
+            new Types[] { Types.WATER, Types.NONE },
+            //10 - Caterpie
+            new Types[] { Types.BUG, Types.NONE },
+            //11 - Metapod
+            new Types[] { Types.BUG, Types.NONE },
+            //12 - Butterfree
+            new Types[] { Types.BUG, Types.FLYING },
+            //13 - Weedle
+            new Types[] { Types.BUG, Types.POISON },
+            //14 - Kakuna
+            new Types[] { Types.BUG, Types.POISON },
+            //15 - Beedrill
+            new Types[] { Types.BUG, Types.POISON },
+            //16 - Pidgey
+            new Types[] { Types.NORMAL, Types.FLYING },
+            //17 - Pidgeotto
+            new Types[] { Types.NORMAL, Types.FLYING },
+            //18 - Pidgeot
+            new Types[] { Types.NORMAL, Types.FLYING },
+            //19 - Rattata
+            new Types[] { Types.NORMAL, Types.NONE },
+            //20 - Raticate
+            new Types[] { Types.NORMAL, Types.NONE },
+            //21 - Spearow
+            new Types[] { Types.NORMAL, Types.FLYING },
+            //22 - Fearow
+            new Types[] { Types.NORMAL, Types.FLYING },
+            //23 - Ekans
+            new Types[] { Types.POISON, Types.NONE },
+            //24 - Arbok
+            new Types[] { Types.POISON, Types.NONE },
+            //25 - Pikachu
+            new Types[] { Types.ELECTRIC, Types.NONE },
+            //26 - Raichu
+            new Types[] { Types.ELECTRIC, Types.NONE },
+            //27 - Sandshrew
+            new Types[] { Types.GROUND, Types.NONE },
+            //28 - Sandslash
+            new Types[] { Types.GROUND, Types.NONE },
+            //29 - Nidoran Female
+            new Types[] { Types.POISON, Types.NONE },
+            //30 - Nidorina
+            new Types[] { Types.POISON, Types.NONE },
+            //31 - Nidoqueen
+            new Types[] { Types.POISON, Types.GROUND },
+            //32 - Nidoran Male
+            new Types[] { Types.POISON, Types.NONE },
+            //33 - Nidorino
+            new Types[] { Types.POISON, Types.NONE },
+            //34 - Nidoking
+            new Types[] { Types.POISON, Types.GROUND },
+            //35 - Clefairy
+            new Types[] { Types.NORMAL, Types.NONE },
+            //36 - Clefable
+            new Types[] { Types.NORMAL, Types.NONE },
+            //37 - Vulpix
+            new Types[] { Types.FIRE, Types.NONE },
+            //38 - Ninetails
+            new Types[] { Types.FIRE, Types.NONE },
+            //39 - Jigglypuff
+            new Types[] { Types.NORMAL, Types.NONE },
+            //40 - Wigglytuff
+            new Types[] { Types.NORMAL, Types.NONE },
+            //41 - Zubat
+            new Types[] { Types.POISON, Types.FLYING },
+            //42 - Golbat
+            new Types[] { Types.POISON, Types.FLYING },
+            //43 - Oddish
+            new Types[] { Types.GRASS, Types.POISON },
+            //44 - Gloom
+            new Types[] { Types.GRASS, Types.POISON },
+            //45 - Vileplume
+            new Types[] { Types.GRASS, Types.POISON },
+            //46 - Paras
+            new Types[] { Types.BUG, Types.GRASS },
+            //47 - Parasect
+            new Types[] { Types.BUG, Types.GRASS },
+            //48 - Venonat
+            new Types[] { Types.BUG, Types.POISON },
+            //49 - Venomoth
+            new Types[] { Types.BUG, Types.POISON },
+            //50 - Diglett
+            new Types[] { Types.GROUND, Types.NONE },
+            //51 - Dugtrio
+            new Types[] { Types.GROUND, Types.NONE },
+            //52 - Meowth
+            new Types[] { Types.NORMAL, Types.NONE },
+            //53 - Persian
+            new Types[] { Types.NORMAL, Types.NONE },
+            //54 - Psyduck
+            new Types[] { Types.WATER, Types.NONE },
+            //55 - Golduck
+            new Types[] { Types.WATER, Types.NONE },
+            //56 - Mankey
+            new Types[] { Types.FIGHTING, Types.NONE },
+            //57 - Primeape
+            new Types[] { Types.FIGHTING, Types.NONE },
+            //58 - Growlithe
+            new Types[] { Types.FIRE, Types.NONE },
+            //59 - Arcanine
+            new Types[] { Types.FIRE, Types.NONE },
+            //60 - Poliwag
+            new Types[] { Types.WATER, Types.NONE },
+            //61 - Poliwhirl
+            new Types[] { Types.WATER, Types.NONE },
+            //62 - Poliwrath
+            new Types[] { Types.WATER, Types.FIGHTING },
+            //63 - Abra
+            new Types[] { Types.PSYCHIC, Types.NONE },
+            //64 - Kadabra
+            new Types[] { Types.PSYCHIC, Types.NONE },
+            //65 - Alakazam
+            new Types[] { Types.PSYCHIC, Types.NONE },
+            //66 - Machop
+            new Types[] { Types.FIGHTING, Types.NONE },
+            //67 - Machoke
+            new Types[] { Types.FIGHTING, Types.NONE },
+            //68 - Machamp
+            new Types[] { Types.FIGHTING, Types.NONE },
+            //69 - Bellsprout
+            new Types[] { Types.GRASS, Types.POISON },
+            //70 - Weepinbell
+            new Types[] { Types.GRASS, Types.POISON },
+            //71 - Victreebel
+            new Types[] { Types.GRASS, Types.POISON },
+            //72 - Tentacool
+            new Types[] { Types.WATER, Types.POISON },
+            //73 - Tentacruel
+            new Types[] { Types.WATER, Types.POISON },
+            //74 - Geodude
+            new Types[] { Types.ROCK, Types.GROUND },
+            //75 - Graveler
+            new Types[] { Types.ROCK, Types.GROUND },
+            //76 - Golem
+            new Types[] { Types.ROCK, Types.GROUND },
+            //77 - Ponyta
+            new Types[] { Types.FIRE, Types.NONE },
+            //78 - Rapidash
+            new Types[] { Types.FIRE, Types.NONE },
+            //79 - Slowpoke
+            new Types[] { Types.WATER, Types.PSYCHIC },
+            //80 - Slowbrow
+            new Types[] { Types.WATER, Types.PSYCHIC },
+            //81 - Magnemite
+            new Types[] { Types.ELECTRIC, Types.NONE },
+            //82 - Magneton
+            new Types[] { Types.ELECTRIC, Types.NONE },
+            //83 - Farfetch'd
+            new Types[] { Types.NORMAL, Types.FLYING },
+            //84 - Doduo
+            new Types[] { Types.NORMAL, Types.FLYING },
+            //85 - Dodrio
+            new Types[] { Types.NORMAL, Types.FLYING },
+            //86 - Seel
+            new Types[] { Types.WATER, Types.NONE },
+            //87 - Dewgong
+            new Types[] { Types.WATER, Types.ICE },
+            //88 - Grimer
+            new Types[] { Types.POISON, Types.NONE },
+            //89 - Muk
+            new Types[] { Types.POISON, Types.NONE },
+            //90 - Shellder
+            new Types[] { Types.WATER, Types.NONE },
+            //91 - Cloyster
+            new Types[] { Types.WATER, Types.ICE },
+            //92 - Gastly
+            new Types[] { Types.GHOST, Types.POISON },
+            //93 - Haunter
+            new Types[] { Types.GHOST, Types.POISON },
+            //94 - Gengar
+            new Types[] { Types.GHOST, Types.POISON },
+            //95 - Onix
+            new Types[] { Types.ROCK, Types.GROUND },
+            //96 - Drowzee
+            new Types[] { Types.PSYCHIC, Types.NONE },
+            //97 - Hypno
+            new Types[] { Types.PSYCHIC, Types.NONE },
+            //98 - Krabby
+            new Types[] { Types.WATER, Types.NONE },
+            //99 - Kingler
+            new Types[] { Types.WATER, Types.NONE },
+            //100 - Voltorb
+            new Types[] { Types.ELECTRIC, Types.NONE },
+            //101 - Electrode
+            new Types[] { Types.ELECTRIC, Types.NONE },
+            //102 - Exeggcute
+            new Types[] { Types.GRASS, Types.PSYCHIC },
+            //103 - Exeggutor
+            new Types[] { Types.GRASS, Types.PSYCHIC },
+            //104 - Cubone
+            new Types[] { Types.GROUND, Types.NONE },
+            //105 - Marowak
+            new Types[] { Types.GROUND, Types.NONE },
+            //106 - Hitmonlee
+            new Types[] { Types.FIGHTING, Types.NONE },
+            //107 - Hitmonchan
+            new Types[] { Types.FIGHTING, Types.NONE },
+            //108 - Lickitung
+            new Types[] { Types.NORMAL, Types.NONE },
+            //109 - Koffing
+            new Types[] { Types.POISON, Types.NONE },
+            //110 - Weezing
+            new Types[] { Types.POISON, Types.NONE },
+            //111 - Rhyhorn
+            new Types[] { Types.GROUND, Types.ROCK },
+            //112 - Rhydon
+            new Types[] { Types.GROUND, Types.ROCK },
+            //113 - Chansey
+            new Types[] { Types.NORMAL, Types.NONE },
+            //114 - Tangela
+            new Types[] { Types.GRASS, Types.NONE },
+            //115 - Kangaskhan
+            new Types[] { Types.NORMAL, Types.NONE },
+            //116 - Horsea
+            new Types[] { Types.WATER, Types.NONE },
+            //117 - Seadra
+            new Types[] { Types.WATER, Types.NONE },
+            //118 - Goldeen
+            new Types[] { Types.WATER, Types.NONE },
+            //119 - Seaking
+            new Types[] { Types.WATER, Types.NONE },
+            //120 - Staryu
+            new Types[] { Types.WATER, Types.NONE },
+            //121 - Starmie
+            new Types[] { Types.WATER, Types.PSYCHIC },
+            //122 - Mr. Mime
+            new Types[] { Types.PSYCHIC, Types.NONE },
+            //123 - Scyther
+            new Types[] { Types.BUG, Types.FLYING },
+            //124 - Jynx
+            new Types[] { Types.ICE, Types.PSYCHIC },
+            //125 - Electabuzz
+            new Types[] { Types.ELECTRIC, Types.NONE },
+            //126 - Magmar
+            new Types[] { Types.FIRE, Types.NONE },
+            //127 - Pinsir
+            new Types[] { Types.BUG, Types.NONE },
+            //128 - Tauros
+            new Types[] { Types.NORMAL, Types.NONE },
+            //129 - Magikarp
+            new Types[] { Types.WATER, Types.NONE },
+            //130 - Gyarados
+            new Types[] { Types.WATER, Types.FLYING },
+            //131 - Lapras
+            new Types[] { Types.WATER, Types.ICE },
+            //132 - Ditto
+            new Types[] { Types.NORMAL, Types.NONE },
+            //133 - Eevee
+            new Types[] { Types.NORMAL, Types.NONE },
+            //134 - Vaporeon
+            new Types[] { Types.WATER, Types.NONE },
+            //135 - Jolteon
+            new Types[] { Types.ELECTRIC, Types.NONE },
+            //136 - Flareon
+            new Types[] { Types.FIRE, Types.NONE },
+            //137 - Porygon
+            new Types[] { Types.NORMAL, Types.NONE },
+            //138 - Omanyte
+            new Types[] { Types.ROCK, Types.WATER },
+            //139 - Omastar
+            new Types[] { Types.ROCK, Types.WATER },
+            //140 - Kabuto
+            new Types[] { Types.ROCK, Types.WATER },
+            //141 - Kabutops
+            new Types[] { Types.ROCK, Types.WATER },
+            //142 - Aerodactyl
+            new Types[] { Types.ROCK, Types.FLYING },
+            //143 - Snorlax
+            new Types[] { Types.NORMAL, Types.NONE },
+            //144 - Articuno
+            new Types[] { Types.ICE, Types.FLYING },
+            //145 - Zapdos
+            new Types[] { Types.ELECTRIC, Types.FLYING },
+            //146 - Moltres
+            new Types[] { Types.FIRE, Types.FLYING },
+            //147 - Dratini
+            new Types[] { Types.DRAGON, Types.NONE },
+            //148 - Dragonair
+            new Types[] { Types.DRAGON, Types.NONE },
+            //149 - Dragonite
+            new Types[] { Types.DRAGON, Types.FLYING },
+            //150 - Mewtwo
+            new Types[] { Types.PSYCHIC, Types.NONE },
+            //151 - Mew
+            new Types[] { Types.PSYCHIC, Types.NONE }
+        };
+
+
+
+
+        
 
 
 

@@ -6,6 +6,9 @@ namespace PokemonGen1StatTracker
     [Serializable]
     public class SaveData
     {
+        public List<Pokemon> savedPokemon = new List<Pokemon>(151);
+
+        
         [Serializable]
         public class Pokemon
         {
@@ -26,6 +29,5 @@ namespace PokemonGen1StatTracker
             public string speedExp;
         }
 
-        public List<Pokemon> savedPokemon = new List<Pokemon>(151);
     }
 }
