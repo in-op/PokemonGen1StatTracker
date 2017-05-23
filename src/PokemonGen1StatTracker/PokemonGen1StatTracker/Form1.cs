@@ -86,13 +86,19 @@ namespace PokemonGen1StatTracker
         }
 
 
+        private string GetSaveNameOfCurrentPokemon()
+        {
+            string name = pokemonDropDown.Text;
+            if (nicknameInput.Text != "")
+                name += " - " + nicknameInput.Text;
+            return name;
+        }
+
 
         private void AddOrUpdatePokemonToList()
         {
             string[] names = GetYourPokemonNames();
-            string name = pokemonDropDown.Text;
-            if (nicknameInput.Text != "")
-                name += " - " + nicknameInput.Text;
+            string name = GetSaveNameOfCurrentPokemon();
 
             if (names.Contains(name)) //update
             {
