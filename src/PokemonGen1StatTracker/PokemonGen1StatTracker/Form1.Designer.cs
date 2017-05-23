@@ -160,9 +160,9 @@
             // 
             // savedPokemonLabel
             // 
-            this.savedPokemonLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.savedPokemonLabel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.savedPokemonLabel.AutoSize = true;
-            this.savedPokemonLabel.Location = new System.Drawing.Point(559, 13);
+            this.savedPokemonLabel.Location = new System.Drawing.Point(567, 13);
             this.savedPokemonLabel.Name = "savedPokemonLabel";
             this.savedPokemonLabel.Size = new System.Drawing.Size(115, 17);
             this.savedPokemonLabel.TabIndex = 39;
@@ -513,9 +513,9 @@
             this.tableLayoutPanel1.Controls.Add(this.numberDisplayLabel, 3, 4);
             this.tableLayoutPanel1.Controls.Add(this.nicknameInput, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.yourPokemonDropDown, 5, 0);
-            this.tableLayoutPanel1.Controls.Add(this.savedPokemonLabel, 4, 0);
             this.tableLayoutPanel1.Controls.Add(this.savePokemonButton, 5, 1);
             this.tableLayoutPanel1.Controls.Add(this.deleteButton, 5, 2);
+            this.tableLayoutPanel1.Controls.Add(this.savedPokemonLabel, 4, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
