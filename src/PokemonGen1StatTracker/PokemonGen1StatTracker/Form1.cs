@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -13,7 +12,7 @@ namespace PokemonGen1StatTracker
         public StatTrackerForm()
         {
             InitializeComponent();
-            yourPokemon = SaveManager.Load();
+            yourPokemon = SaveFile.Load();
             InitializeDropDowns();
         }
         private void InitializeDropDowns()
@@ -36,13 +35,13 @@ namespace PokemonGen1StatTracker
                     yourPokemon.Remove(pokemon);
                 }
             }
-            SaveManager.Save(yourPokemon);
+            SaveFile.Save(yourPokemon);
             RefreshSavedPokemonDropdown();
         }
         private void savePokemonButton_Click(object sender, EventArgs e)
         {
             AddOrUpdatePokemonToList();
-            SaveManager.Save(yourPokemon);
+            SaveFile.Save(yourPokemon);
             RefreshSavedPokemonDropdown();
         }
         private void addExpFromVitaminButton_Click(object sender, EventArgs e)

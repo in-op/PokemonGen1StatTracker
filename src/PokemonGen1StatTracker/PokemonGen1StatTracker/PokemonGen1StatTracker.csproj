@@ -47,6 +47,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Saving">
+      <HintPath>..\..\..\..\Saving\src\Saving\bin\Release4.7\Saving.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -61,8 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pokemon.cs" />
-    <Compile Include="SaveData.cs" />
-    <Compile Include="SaveManager.cs" />
+    <Compile Include="SaveFile.cs" />
     <Compile Include="StatCalculator.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
