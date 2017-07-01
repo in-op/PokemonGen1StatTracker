@@ -8,18 +8,20 @@ namespace PokemonGen1StatTracker
     public partial class StatTrackerForm : Form
     {
         private List<Pokemon> yourPokemon;
+        private Dictionary<string, Pokemon> nameStringToPokemon;
 
         public StatTrackerForm()
         {
             InitializeComponent();
-            yourPokemon = SaveFile.Load();
-            InitializeDropDowns();
+            Initialize();
         }
-        private void InitializeDropDowns()
+        private void Initialize()
         {
+            yourPokemon = SaveFile.Load();
+            RefreshSavedPokemonDropdown();
+
             pokemonDropDown.Items.AddRange(PokemonData.Species);
             koedPokemonDropDown.Items.AddRange(PokemonData.Species);
-            RefreshSavedPokemonDropdown();
             vitaminDropDown.Items.AddRange(PokemonData.Vitamins);
         }
 
@@ -28,13 +30,8 @@ namespace PokemonGen1StatTracker
             string name = GetSaveNameOfCurrentPokemon();
             string[] names = GetYourPokemonNames();
             for (int i = 0; i < yourPokemon.Count; i++)
-            {
                 if (name == GetSaveName(yourPokemon[i]))
-                {
-                    Pokemon pokemon = yourPokemon[i];
-                    yourPokemon.Remove(pokemon);
-                }
-            }
+                    yourPokemon.Remove(yourPokemon[i]);
             SaveFile.Save(yourPokemon);
             RefreshSavedPokemonDropdown();
         }
@@ -381,9 +378,9 @@ namespace PokemonGen1StatTracker
 
         private string[] GetYourPokemonNames()
         {
-            string[] output = new string[yourPokemon.Count];
+            int length = yourPokemon.Count;
+            string[] output = new string[length];
 
-            int length = output.Length;
             for (int i = 0; i < length; i++)
             {
                 output[i] = yourPokemon[i].species;

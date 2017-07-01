@@ -66,8 +66,6 @@
             this.levelInput = new System.Windows.Forms.TextBox();
             this.spriteBox = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.numberHeaderLabel = new System.Windows.Forms.Label();
-            this.numberDisplayLabel = new System.Windows.Forms.Label();
             this.typesLabel = new System.Windows.Forms.Label();
             this.type1Label = new System.Windows.Forms.Label();
             this.type2Label = new System.Windows.Forms.Label();
@@ -78,6 +76,8 @@
             this.speedExpLabel = new System.Windows.Forms.Label();
             this.addExpFromVitaminButton = new System.Windows.Forms.Button();
             this.vitaminDropDown = new System.Windows.Forms.ComboBox();
+            this.numberHeaderLabel = new System.Windows.Forms.Label();
+            this.numberDisplayLabel = new System.Windows.Forms.Label();
             this.deleteButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.spriteBox)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -98,7 +98,7 @@
             this.pokemonDropDown.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.pokemonDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.pokemonDropDown.FormattingEnabled = true;
-            this.pokemonDropDown.Location = new System.Drawing.Point(414, 10);
+            this.pokemonDropDown.Location = new System.Drawing.Point(414, 9);
             this.pokemonDropDown.Name = "pokemonDropDown";
             this.pokemonDropDown.Size = new System.Drawing.Size(130, 24);
             this.pokemonDropDown.TabIndex = 1;
@@ -152,7 +152,7 @@
             this.yourPokemonDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.yourPokemonDropDown.FormattingEnabled = true;
             this.yourPokemonDropDown.IntegralHeight = false;
-            this.yourPokemonDropDown.Location = new System.Drawing.Point(702, 10);
+            this.yourPokemonDropDown.Location = new System.Drawing.Point(702, 9);
             this.yourPokemonDropDown.Name = "yourPokemonDropDown";
             this.yourPokemonDropDown.Size = new System.Drawing.Size(244, 24);
             this.yourPokemonDropDown.TabIndex = 40;
@@ -188,7 +188,7 @@
             this.koedPokemonDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.koedPokemonDropDown.FormattingEnabled = true;
             this.koedPokemonDropDown.IntegralHeight = false;
-            this.koedPokemonDropDown.Location = new System.Drawing.Point(72, 543);
+            this.koedPokemonDropDown.Location = new System.Drawing.Point(72, 542);
             this.koedPokemonDropDown.Name = "koedPokemonDropDown";
             this.koedPokemonDropDown.Size = new System.Drawing.Size(130, 24);
             this.koedPokemonDropDown.TabIndex = 36;
@@ -536,26 +536,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(963, 582);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // numberHeaderLabel
-            // 
-            this.numberHeaderLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.numberHeaderLabel.AutoSize = true;
-            this.numberHeaderLabel.Location = new System.Drawing.Point(327, 189);
-            this.numberHeaderLabel.Name = "numberHeaderLabel";
-            this.numberHeaderLabel.Size = new System.Drawing.Size(30, 17);
-            this.numberHeaderLabel.TabIndex = 42;
-            this.numberHeaderLabel.Text = "No:";
-            // 
-            // numberDisplayLabel
-            // 
-            this.numberDisplayLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.numberDisplayLabel.AutoSize = true;
-            this.numberDisplayLabel.Location = new System.Drawing.Point(473, 189);
-            this.numberDisplayLabel.Name = "numberDisplayLabel";
-            this.numberDisplayLabel.Size = new System.Drawing.Size(12, 17);
-            this.numberDisplayLabel.TabIndex = 43;
-            this.numberDisplayLabel.Text = " ";
-            // 
             // typesLabel
             // 
             this.typesLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -656,10 +636,30 @@
             this.vitaminDropDown.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.vitaminDropDown.FormattingEnabled = true;
             this.vitaminDropDown.IntegralHeight = false;
-            this.vitaminDropDown.Location = new System.Drawing.Point(346, 543);
+            this.vitaminDropDown.Location = new System.Drawing.Point(346, 542);
             this.vitaminDropDown.Name = "vitaminDropDown";
             this.vitaminDropDown.Size = new System.Drawing.Size(130, 24);
             this.vitaminDropDown.TabIndex = 53;
+            // 
+            // numberHeaderLabel
+            // 
+            this.numberHeaderLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.numberHeaderLabel.AutoSize = true;
+            this.numberHeaderLabel.Location = new System.Drawing.Point(327, 189);
+            this.numberHeaderLabel.Name = "numberHeaderLabel";
+            this.numberHeaderLabel.Size = new System.Drawing.Size(30, 17);
+            this.numberHeaderLabel.TabIndex = 42;
+            this.numberHeaderLabel.Text = "No:";
+            // 
+            // numberDisplayLabel
+            // 
+            this.numberDisplayLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.numberDisplayLabel.AutoSize = true;
+            this.numberDisplayLabel.Location = new System.Drawing.Point(473, 189);
+            this.numberDisplayLabel.Name = "numberDisplayLabel";
+            this.numberDisplayLabel.Size = new System.Drawing.Size(12, 17);
+            this.numberDisplayLabel.TabIndex = 43;
+            this.numberDisplayLabel.Text = " ";
             // 
             // deleteButton
             // 
