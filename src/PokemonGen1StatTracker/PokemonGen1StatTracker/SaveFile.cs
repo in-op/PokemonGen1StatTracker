@@ -8,14 +8,14 @@ namespace PokemonGen1StatTracker
     {
         private static readonly string path = @".\\save\\save.bin";
 
-        internal static List<Pokemon> Load()
+        internal static List<PokemonDTO> Load()
         {
             if (File.Exists(path))
-                return SaveManager.Load<List<Pokemon>>(path);
-            else return new List<Pokemon>(151);
+                return SaveManager.Load<List<PokemonDTO>>(path);
+            else return new List<PokemonDTO>(151);
         }
 
-        internal static void Save(List<Pokemon> yourPokemon)
+        internal static void Save(List<PokemonDTO> yourPokemon)
         {
             SaveManager.Save(path, yourPokemon);
         }

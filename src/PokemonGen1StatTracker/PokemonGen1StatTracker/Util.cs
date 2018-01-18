@@ -9,9 +9,9 @@ namespace PokemonGen1StatTracker
 {
     internal static class Util
     {
-        internal static string ToString(PokemonData.Type type)
+        internal static string ToString(Pokemon.Type type)
         {
-            if (type == PokemonData.Type.None)
+            if (type == Pokemon.Type.None)
                 return "";
             else return type.ToString();
         }
