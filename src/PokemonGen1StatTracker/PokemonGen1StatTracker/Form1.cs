@@ -317,8 +317,8 @@ namespace PokemonGen1StatTracker
 
         private void DisplayTypes(int pokemonNumber)
         {
-            type1Label.Text = PokemonData.TypeToString(PokemonData.AllTypes[pokemonNumber][0]);
-            type2Label.Text = PokemonData.TypeToString(PokemonData.AllTypes[pokemonNumber][1]);
+            type1Label.Text = Util.ToString(PokemonData.AllTypes[pokemonNumber][0]);
+            type2Label.Text = Util.ToString(PokemonData.AllTypes[pokemonNumber][1]);
         }
 
         private void DisplayBaseStats(int pokemonNumber)
